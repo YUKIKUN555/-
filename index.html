@@ -1,0 +1,2890 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c131e">
+<meta name="description" content="人気番組・放送時間・リモコン番号・越境受信から、日本全国47都道府県と細分化した地域を推理するテレビエリア推理ゲーム。">
+<title>TVエリア探偵 | 電波から、あなたの地域を推理する</title>
+<style>
+:root{color-scheme:dark;--bg:#0c131e;--panel:#152231;--border:#2e4152;--muted:#9eb0bf;--text:#edf5f8;--mint:#8be9d0;--gold:#ffd48e;--blue:#87b7f7;--danger:#f7a6a8;--shadow:0 20px 66px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 55% 31% at 90% 0%,#1b3c4b 0%,transparent 80%),radial-gradient(ellipse 70% 50% at 0 100%,#182b40 0%,transparent 75%),var(--bg);font-family:Inter,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;color:var(--text);min-height:100vh;line-height:1.65}button{font:inherit;cursor:pointer}a{color:var(--mint)}a:hover{opacity:.8}button:focus-visible,a:focus-visible{outline:3px solid var(--mint);outline-offset:3px}button:disabled{opacity:.36;cursor:not-allowed}::selection{background:#235b56;color:#fff}
+.app{max-width:1170px;margin:0 auto;padding:28px 23px 80px}.header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:45px}.brand{display:flex;gap:13px;align-items:center;text-decoration:none;color:inherit}.brandIcon{width:48px;height:48px;border:1px solid #497c80;border-radius:13px;display:grid;place-items:center;background:#1d333b;box-shadow:0 0 35px #0d6f6350}.brandIcon svg{width:26px;height:26px;stroke:var(--mint)}.brand strong{display:block;font-size:15px;letter-spacing:.15em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.21em}.headerRight{display:flex;gap:10px;align-items:center}.badge{font-size:11px;color:var(--mint);letter-spacing:.11em;border:1px solid #3a6262;border-radius:30px;padding:7px 12px;background:#173439}.headerLink{background:none;border:0;color:var(--muted);font-size:13px;padding:9px}
+.grid{display:grid;grid-template-columns:minmax(0,1.63fr) minmax(270px,.90fr);gap:25px}.eyebrow{font-size:12px;color:var(--mint);font-weight:750;letter-spacing:.21em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center}.light{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}h1{font-size:clamp(31px,4.6vw,58px);line-height:1.18;letter-spacing:-.05em;margin:19px 0 16px;font-weight:800}h1 em{font-style:normal;color:var(--mint)}.heroSub{font-size:15px;color:#bacad5;max-width:570px;line-height:1.9;margin:0}.mainPanel{min-width:0}.intro{padding:5px 1px 22px}.metrics{display:flex;flex-wrap:wrap;gap:11px;margin:20px 0 24px}.metric{background:#15232b80;border:1px solid #2c4950;border-radius:9px;padding:9px 12px;font-size:12px;color:#bbcbd3}.metric b{color:var(--text);font-size:15px;margin-right:5px;font-variant-numeric:tabular-nums}
+.playbox{position:relative;overflow:hidden;background:linear-gradient(160deg,#1b2b3c,#111d2b 62%);border:1px solid #365366;border-radius:20px;padding:28px 30px 24px;box-shadow:var(--shadow);min-height:370px}.playbox:before{content:"";pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent,transparent 5px,#b5f0e607 6px);opacity:.35}.boxTop{display:flex;justify-content:space-between;gap:12px;align-items:center;position:relative}.stepnum{font-size:12px;color:var(--mint);font-weight:800;letter-spacing:.16em}.tag{font-size:11px;color:#bed3db;border:1px solid #3c5e67;background:#203744;border-radius:30px;padding:4px 10px}.meter{height:4px;background:#2c4051;border-radius:30px;margin:19px 0 24px;overflow:hidden}.meter>div{height:100%;background:linear-gradient(90deg,#6ab9a9,#a4efd5);width:0;transition:width .4s ease}.question{position:relative;font-size:clamp(21px,2.65vw,29px);font-weight:750;line-height:1.5;min-height:86px;letter-spacing:-.025em;margin:0 0 12px}.hint{font-size:12px;color:#9cafc2;min-height:34px;margin:0 0 23px;position:relative}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;position:relative}.answer{position:relative;display:flex;align-items:center;gap:10px;padding:15px 13px;border:1px solid #3b576c;border-radius:11px;color:var(--text);background:#1a2a3b;text-align:left;transition:transform .13s,border-color .13s,background .13s;min-height:54px}.answer:hover{transform:translateY(-2px);background:#254153;border-color:#77afaa}.answer:first-child{background:#1b3c39;border-color:#42796f}.answer:nth-child(5){grid-column:span 2}.ansNo{display:inline-flex;align-items:center;justify-content:center;background:#304555;color:#b6cccf;border:1px solid #466171;width:23px;height:23px;border-radius:6px;flex:none;font-size:11px;font-weight:800}.answer:first-child .ansNo{color:var(--mint)}.subControls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:20px;gap:12px;position:relative}.subControls div{display:flex;gap:11px}.ghost{border:1px solid #3d5568;border-radius:9px;background:transparent;color:#bacbd7;padding:9px 12px;font-size:12px}.ghost:hover{background:#264053}.smallNote{font-size:11px;color:#829caf}.primary{color:#092324;background:var(--mint);font-weight:800;border:0;border-radius:10px;padding:13px 19px;box-shadow:0 7px 20px #69efd020}.primary:hover{filter:brightness(1.05)}
+.side{padding-top:8px}.sideTop{background:linear-gradient(155deg,#162c38,#13202e);border:1px solid #355064;border-radius:17px;padding:22px;overflow:hidden}.sideLabel{font-size:12px;letter-spacing:.17em;color:var(--muted);font-weight:750}.wave{height:155px;width:100%;display:block;margin:7px 0 12px}.wave path{fill:none;stroke:var(--mint);stroke-width:2.1;stroke-linecap:round;filter:drop-shadow(0 0 5px #50cdb28e)}.wave .gridline{stroke:#40606a;stroke-width:.6;opacity:.5;filter:none}.sideTip{font-size:13px;color:#bbd0dc;margin:12px 0 0}.candidate{margin-top:18px;padding-top:18px;border-top:1px solid #335063}.candidateHeading{display:flex;justify-content:space-between;align-items:center;font-size:12px}.candidate button{color:var(--mint);font-size:12px;border:0;background:none}.candidateList{margin-top:12px;display:grid;gap:13px}.candidateRow{display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:12px}.candidateRow span:nth-child(2){color:#a1cdbf;font-variant-numeric:tabular-nums}.bar{grid-column:1 / span 2;height:5px;border-radius:9px;background:#314354;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#74b3b4,var(--mint));border-radius:9px}.sideBottom{margin-top:16px;border:1px solid #2c4355;border-radius:15px;padding:20px;color:#a9bbc9;font-size:12px}.sideBottom h3{margin:0 0 9px;font-size:13px;color:#d8e8ee}.sideBottom p{margin:0;line-height:1.9}.sideBottom strong{color:var(--gold)}
+.resultTitle{font-size:12px;letter-spacing:.18em;color:var(--mint);font-weight:750;margin:10px 0}.resultPref{font-size:clamp(36px,5.5vw,59px);line-height:1.25;font-weight:850;letter-spacing:-.05em;margin:4px 0 13px}.resultZone{font-size:19px;font-weight:700;color:var(--gold);margin:10px 0}.resultDesc{color:#b7c9d3;font-size:13px;line-height:1.9;margin:11px 0 16px}.scoreSection{margin-top:18px;display:grid;gap:9px}.scoreLine{display:grid;grid-template-columns:135px 1fr 46px;gap:9px;align-items:center;font-size:12px;color:#b7c9d3}.scoreLine .bar{grid-column:auto}.scoreLine b{text-align:right;color:#e4fff1}.alternatives{margin:20px 0 4px;padding:15px;border:1px solid #455a65;border-radius:12px;font-size:12px;color:#c5d5dc}.alternatives strong{display:block;color:var(--gold);margin-bottom:5px}.alternatives div{margin:5px 0}.resultActions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 5px}.resultActions button{font-size:12px}.finePrint{font-size:11px;color:#99abb8;line-height:1.8}.history{border-top:1px solid #334a58;padding-top:14px;margin-top:20px;font-size:12px;color:#9eb6c4}.history details summary{cursor:pointer}.history li{padding:3px 0}.history ol{padding-left:20px}.sourcelink{font-size:12px;display:block;padding:5px 0}.disclaimer{margin-top:27px;color:#91a5b4;font-size:11px;line-height:1.9}.footer{border-top:1px solid #2b4253;margin-top:38px;padding-top:19px;font-size:11px;color:#7e9baa;display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.header{margin-bottom:29px}.side{display:grid;grid-template-columns:1fr 1fr;gap:15px}.sideBottom{margin-top:0}.sideTop{height:100%}.wave{height:100px}}
+@media(max-width:560px){.sideTop{height:auto}.headerRight{flex-shrink:0}.headerLink{max-width:82px;white-space:nowrap}.app{padding:20px 13px 40px}.header{gap:5px}.headerRight{gap:5px}.headerLink{font-size:11px;padding:6px}.badge{font-size:10px;padding:6px}.brand strong{font-size:13px}.brand small{font-size:8px}.brandIcon{width:40px;height:40px}.side{display:block}.sideBottom{margin-top:13px}.playbox{padding:21px 18px}.answers{gap:8px}.answer{font-size:12px;padding:13px 9px;gap:7px;min-height:59px}.ansNo{width:20px;height:21px}.smallNote{display:none}.scoreLine{grid-template-columns:100px 1fr 38px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+.setupGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;position:relative;margin:22px 0 10px}
+.setupGrid label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#cedee6;font-weight:700}
+.setupGrid select,.setupGrid input{min-width:0;width:100%;border-radius:10px;border:1px solid #466475;background:#0e202f;color:#eff7f8;padding:12px;font:inherit;font-size:13px;height:46px}
+.setupGrid select:focus-visible,.setupGrid input:focus-visible{outline:2px solid #8be9d0}
+.ageRow{display:flex;gap:7px}.ageRow input{width:72px;flex-shrink:0}
+.ageRow input[hidden]{display:none}.setupNote{font-size:11px;line-height:1.9;color:#a1b8c6;position:relative}
+@media(max-width:520px){.setupGrid{grid-template-columns:1fr;gap:12px}.playbox{min-height:500px}}
+</style>
+</head>
+<body><main class="app">
+  <header class="header"><a class="brand" href="#top" aria-label="TVエリア探偵・トップ"><span class="brandIcon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="6.5" width="18" height="13" rx="3"/><path d="m7 2 5 4.5L17 2M7 11h9M7 15h5M18 11v4"/></svg></span><span><strong>TVエリア探偵</strong><small>ON-AIR LOCATION MYSTERY</small></span></a><div class="headerRight"><span class="badge">BETA · V3.0</span><button class="headerLink" id="aboutBtn">ゲームの仕組み</button></div></header>
+  <div class="grid" id="top">
+    <section class="mainPanel"><div class="intro"><div class="eyebrow"><span class="light"></span> RECEIVING SIGNAL...</div><h1>そのテレビ、<br><em>どこの電波？</em></h1><p class="heroSub">アニメの放送時間、昔の人気番組、地元のテレビ文化。系列が分からなくても、身近な番組の記憶から、あなたが見ていた地域を推理します。県境の越境受信も計算に入れて。</p><div class="metrics"><div class="metric"><b>47</b>都道府県</div><div class="metric"><b id="areaCount">217</b>地域候補</div><div class="metric"><b id="questionCount">120+</b>質問バリエーション</div><div class="metric">完全ローカル・データ保存なし</div></div></div>
+    <section class="playbox" aria-live="polite"><div class="boxTop"><div id="stepLabel" class="stepnum">SYSTEM READY</div><div id="stageTag" class="tag">地デジ推理モード</div></div><div class="meter" aria-hidden="true"><div id="progress"></div></div><div id="gameContent"></div></section>
+    <div class="disclaimer">※ 推理するのは<strong>テレビを見ていた場所</strong>です。出身地・出生地は、そこで長くテレビを見ていた場合に限り一致しやすくなります。BS・CS・インターネット配信は判定対象外です。越境受信の地区別数値は実測データではなく推定用の仮定です。</div></section>
+    <aside class="side"><div class="sideTop"><div class="sideLabel">SIGNAL ANALYZER / 受信解析</div><svg class="wave" viewBox="0 0 320 150" role="img" aria-label="受信電波の波形を表現した飾り"><path class="gridline" d="M0 30H320M0 75H320M0 120H320M40 0V150M100 0V150M160 0V150M220 0V150M280 0V150"/><path id="wavePath" d="M0 77Q15 74 22 77T44 77Q51 38 58 77T80 77Q89 118 96 77T118 77Q125 15 132 77T154 77Q165 115 174 77T198 77Q207 45 216 77T240 77Q252 100 265 77T290 77Q306 74 320 77"/></svg><div class="sideTip" id="analysisTip">まだ何も答えていません。最初の質問から、電波の特徴を調べましょう。</div><div class="candidate"><div class="candidateHeading"><strong>推定上位</strong><button id="peekBtn" type="button">表示する</button></div><div id="candidateList" class="candidateList" hidden></div></div></div><div class="sideBottom"><h3>HOW IT WORKS</h3><p>各回答をもとに候補地域の一致度を再計算。<strong>放送年代・時差放送・越境受信は別の要素</strong>として扱います。地域を絞れないときは無理に断定しません。</p></div></aside>
+  </div><footer class="footer"><span>TV AREA DETECTIVE © 2026 · ローカル推理デモ</span><span>位置情報取得・外部通信・Cookieなし</span></footer>
+</main><script>
+'use strict';
+const PREFS = [
+  {
+    "name": "北海道",
+    "group": "北海道",
+    "remote": [
+      3,
+      5,
+      1,
+      6,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "道央（札幌・小樽）",
+        "reach": {}
+      },
+      {
+        "name": "道南（函館・渡島）",
+        "reach": {}
+      },
+      {
+        "name": "道北（旭川・名寄）",
+        "reach": {}
+      },
+      {
+        "name": "道東（釧路・根室）",
+        "reach": {}
+      },
+      {
+        "name": "オホーツク（北見・網走）",
+        "reach": {}
+      },
+      {
+        "name": "十勝（帯広）",
+        "reach": {}
+      },
+      {
+        "name": "胆振・日高（室蘭・苫小牧）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "青森県",
+    "group": "東北",
+    "remote": [
+      3,
+      1,
+      6,
+      5,
+      null,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "津軽（青森・弘前）",
+        "reach": {}
+      },
+      {
+        "name": "南部（八戸・三沢）",
+        "reach": {}
+      },
+      {
+        "name": "下北（むつ）",
+        "reach": {}
+      },
+      {
+        "name": "西北五（五所川原）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "岩手県",
+    "group": "東北",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "盛岡・県央",
+        "reach": {}
+      },
+      {
+        "name": "県南（一関・奥州）",
+        "reach": {}
+      },
+      {
+        "name": "沿岸（宮古・釜石）",
+        "reach": {}
+      },
+      {
+        "name": "県北（二戸・久慈）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "宮城県",
+    "group": "東北",
+    "remote": [
+      3,
+      4,
+      1,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "仙台都市圏",
+        "reach": {}
+      },
+      {
+        "name": "県北（大崎・登米）",
+        "reach": {}
+      },
+      {
+        "name": "県南（名取・白石）",
+        "reach": {}
+      },
+      {
+        "name": "三陸沿岸（石巻・気仙沼）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "秋田県",
+    "group": "東北",
+    "remote": [
+      1,
+      4,
+      null,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "秋田中央",
+        "reach": {}
+      },
+      {
+        "name": "県北（大館・能代）",
+        "reach": {}
+      },
+      {
+        "name": "県南（横手・大仙）",
+        "reach": {}
+      },
+      {
+        "name": "由利本荘・にかほ",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "山形県",
+    "group": "東北",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "村山（山形・天童）",
+        "reach": {}
+      },
+      {
+        "name": "最上（新庄）",
+        "reach": {}
+      },
+      {
+        "name": "置賜（米沢）",
+        "reach": {}
+      },
+      {
+        "name": "庄内（鶴岡・酒田）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "福島県",
+    "group": "東北",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "中通り北部（福島）",
+        "reach": {}
+      },
+      {
+        "name": "中通り中南部（郡山・白河）",
+        "reach": {}
+      },
+      {
+        "name": "浜通り（いわき・相馬）",
+        "reach": {}
+      },
+      {
+        "name": "会津（会津若松・喜多方）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "茨城県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "県南（土浦・つくば）",
+        "reach": {
+          "mx": 0.46,
+          "ct": 0.34,
+          "sv": 0.12
+        }
+      },
+      {
+        "name": "県西（古河・筑西）",
+        "reach": {
+          "tg": 0.37,
+          "sv": 0.32,
+          "gm": 0.21,
+          "mx": 0.18
+        }
+      },
+      {
+        "name": "県央（水戸・ひたちなか）",
+        "reach": {
+          "mx": 0.15,
+          "ct": 0.09
+        }
+      },
+      {
+        "name": "県北（日立・北茨城）",
+        "reach": {
+          "mx": 0.07
+        }
+      },
+      {
+        "name": "鹿行（鹿嶋・神栖）",
+        "reach": {
+          "ct": 0.28,
+          "mx": 0.18
+        }
+      }
+    ]
+  },
+  {
+    "name": "栃木県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "tg",
+    "areas": [
+      {
+        "name": "宇都宮・県央",
+        "reach": {
+          "tg": 0.97,
+          "gm": 0.1
+        }
+      },
+      {
+        "name": "県南（小山・栃木）",
+        "reach": {
+          "tg": 0.94,
+          "sv": 0.43,
+          "gm": 0.35,
+          "mx": 0.16
+        }
+      },
+      {
+        "name": "県北（那須・大田原）",
+        "reach": {
+          "tg": 0.87
+        }
+      },
+      {
+        "name": "日光・県西",
+        "reach": {
+          "tg": 0.64,
+          "gm": 0.19
+        }
+      }
+    ]
+  },
+  {
+    "name": "群馬県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "gm",
+    "areas": [
+      {
+        "name": "県央（前橋・高崎）",
+        "reach": {
+          "gm": 0.96,
+          "sv": 0.32,
+          "tg": 0.1
+        }
+      },
+      {
+        "name": "東毛（太田・館林）",
+        "reach": {
+          "gm": 0.93,
+          "tg": 0.49,
+          "sv": 0.53
+        }
+      },
+      {
+        "name": "西毛（富岡・安中）",
+        "reach": {
+          "gm": 0.83,
+          "sv": 0.18
+        }
+      },
+      {
+        "name": "北毛（沼田・吾妻）",
+        "reach": {
+          "gm": 0.65
+        }
+      }
+    ]
+  },
+  {
+    "name": "埼玉県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "sv",
+    "areas": [
+      {
+        "name": "さいたま・川口",
+        "reach": {
+          "sv": 0.98,
+          "mx": 0.75,
+          "ct": 0.15
+        }
+      },
+      {
+        "name": "県東（越谷・春日部）",
+        "reach": {
+          "sv": 0.92,
+          "mx": 0.62,
+          "ct": 0.53,
+          "tg": 0.13
+        }
+      },
+      {
+        "name": "県北（熊谷・深谷）",
+        "reach": {
+          "sv": 0.88,
+          "gm": 0.49,
+          "tg": 0.19
+        }
+      },
+      {
+        "name": "県西（所沢・川越）",
+        "reach": {
+          "sv": 0.95,
+          "mx": 0.61,
+          "tk": 0.13
+        }
+      },
+      {
+        "name": "秩父",
+        "reach": {
+          "sv": 0.64,
+          "mx": 0.12
+        }
+      }
+    ]
+  },
+  {
+    "name": "千葉県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "ct",
+    "areas": [
+      {
+        "name": "北西（船橋・松戸・柏）",
+        "reach": {
+          "ct": 0.95,
+          "mx": 0.73,
+          "sv": 0.25
+        }
+      },
+      {
+        "name": "県央（千葉・市原）",
+        "reach": {
+          "ct": 0.97,
+          "mx": 0.46
+        }
+      },
+      {
+        "name": "北東（成田・銚子）",
+        "reach": {
+          "ct": 0.82,
+          "mx": 0.17
+        }
+      },
+      {
+        "name": "南房総（館山・鴨川）",
+        "reach": {
+          "ct": 0.79,
+          "mx": 0.12
+        }
+      }
+    ]
+  },
+  {
+    "name": "東京都",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "mx",
+    "areas": [
+      {
+        "name": "23区中心部",
+        "reach": {
+          "mx": 0.98,
+          "tk": 0.14,
+          "sv": 0.13,
+          "ct": 0.13
+        }
+      },
+      {
+        "name": "23区西部・南部",
+        "reach": {
+          "mx": 0.98,
+          "tk": 0.4,
+          "sv": 0.13
+        }
+      },
+      {
+        "name": "23区東部・北部",
+        "reach": {
+          "mx": 0.98,
+          "sv": 0.36,
+          "ct": 0.39
+        }
+      },
+      {
+        "name": "多摩東部（調布・府中）",
+        "reach": {
+          "mx": 0.95,
+          "tk": 0.43,
+          "sv": 0.24
+        }
+      },
+      {
+        "name": "多摩西部（立川・八王子）",
+        "reach": {
+          "mx": 0.84,
+          "tk": 0.2,
+          "sv": 0.21
+        }
+      },
+      {
+        "name": "島しょ部（伊豆・小笠原）",
+        "reach": {
+          "mx": 0.15
+        }
+      }
+    ]
+  },
+  {
+    "name": "神奈川県",
+    "group": "関東",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "tk",
+    "areas": [
+      {
+        "name": "横浜・川崎",
+        "reach": {
+          "tk": 0.98,
+          "mx": 0.65,
+          "ct": 0.12
+        }
+      },
+      {
+        "name": "湘南・三浦",
+        "reach": {
+          "tk": 0.94,
+          "mx": 0.34
+        }
+      },
+      {
+        "name": "県央（厚木・海老名）",
+        "reach": {
+          "tk": 0.91,
+          "mx": 0.48
+        }
+      },
+      {
+        "name": "相模原・県北",
+        "reach": {
+          "tk": 0.86,
+          "mx": 0.58
+        }
+      },
+      {
+        "name": "県西（小田原・箱根）",
+        "reach": {
+          "tk": 0.72,
+          "mx": 0.14
+        }
+      }
+    ]
+  },
+  {
+    "name": "新潟県",
+    "group": "甲信越・北陸",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "下越（新潟・新発田）",
+        "reach": {}
+      },
+      {
+        "name": "中越（長岡・柏崎）",
+        "reach": {}
+      },
+      {
+        "name": "上越（上越・糸魚川）",
+        "reach": {}
+      },
+      {
+        "name": "魚沼（南魚沼・十日町）",
+        "reach": {}
+      },
+      {
+        "name": "佐渡",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "富山県",
+    "group": "甲信越・北陸",
+    "remote": [
+      3,
+      1,
+      6,
+      null,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "富山・県東部",
+        "reach": {}
+      },
+      {
+        "name": "高岡・射水",
+        "reach": {}
+      },
+      {
+        "name": "砺波・南砺",
+        "reach": {}
+      },
+      {
+        "name": "魚津・黒部",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "石川県",
+    "group": "甲信越・北陸",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "金沢・野々市",
+        "reach": {}
+      },
+      {
+        "name": "加賀（小松・加賀）",
+        "reach": {}
+      },
+      {
+        "name": "能登（七尾・輪島）",
+        "reach": {}
+      },
+      {
+        "name": "奥能登（珠洲・能登）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "福井県",
+    "group": "甲信越・北陸",
+    "remote": [
+      1,
+      7,
+      null,
+      null,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "嶺北（福井・坂井）",
+        "reach": {}
+      },
+      {
+        "name": "奥越（大野・勝山）",
+        "reach": {}
+      },
+      {
+        "name": "嶺南（敦賀・美浜）",
+        "reach": {
+          "kb": 0.1
+        }
+      },
+      {
+        "name": "若狭（小浜・高浜）",
+        "reach": {
+          "kb": 0.23,
+          "sn": 0.09
+        }
+      }
+    ]
+  },
+  {
+    "name": "山梨県",
+    "group": "甲信越・北陸",
+    "remote": [
+      1,
+      4,
+      6,
+      null,
+      null,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "甲府盆地（甲府・甲斐）",
+        "reach": {}
+      },
+      {
+        "name": "峡東（山梨・笛吹）",
+        "reach": {}
+      },
+      {
+        "name": "峡南（身延）",
+        "reach": {}
+      },
+      {
+        "name": "郡内（富士吉田・大月）",
+        "reach": {
+          "mx": 0.16,
+          "tk": 0.07
+        }
+      },
+      {
+        "name": "北杜・韮崎",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "長野県",
+    "group": "甲信越・北陸",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "北信（長野・中野）",
+        "reach": {}
+      },
+      {
+        "name": "東信（上田・佐久）",
+        "reach": {}
+      },
+      {
+        "name": "中信（松本・安曇野）",
+        "reach": {}
+      },
+      {
+        "name": "南信（諏訪・伊那）",
+        "reach": {}
+      },
+      {
+        "name": "飯田・下伊那",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "岐阜県",
+    "group": "東海",
+    "remote": [
+      3,
+      4,
+      5,
+      6,
+      1,
+      null
+    ],
+    "own": "gb",
+    "areas": [
+      {
+        "name": "岐阜・西濃",
+        "reach": {
+          "gb": 0.98,
+          "tva": 0.65,
+          "mt": 0.23
+        }
+      },
+      {
+        "name": "中濃（関・美濃加茂）",
+        "reach": {
+          "gb": 0.93,
+          "tva": 0.51,
+          "mt": 0.09
+        }
+      },
+      {
+        "name": "東濃（多治見・中津川）",
+        "reach": {
+          "gb": 0.86,
+          "tva": 0.36
+        }
+      },
+      {
+        "name": "飛騨（高山・飛騨）",
+        "reach": {
+          "gb": 0.67,
+          "tva": 0.07
+        }
+      },
+      {
+        "name": "下呂・郡上",
+        "reach": {
+          "gb": 0.76,
+          "tva": 0.21
+        }
+      }
+    ]
+  },
+  {
+    "name": "静岡県",
+    "group": "東海",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "西部（浜松・湖西）",
+        "reach": {
+          "tva": 0.12
+        }
+      },
+      {
+        "name": "中部（静岡・焼津）",
+        "reach": {}
+      },
+      {
+        "name": "志太・榛原（藤枝・島田）",
+        "reach": {}
+      },
+      {
+        "name": "東部（沼津・富士）",
+        "reach": {
+          "tk": 0.12
+        }
+      },
+      {
+        "name": "伊豆・熱海",
+        "reach": {
+          "tk": 0.26,
+          "mx": 0.12
+        }
+      }
+    ]
+  },
+  {
+    "name": "愛知県",
+    "group": "東海",
+    "remote": [
+      3,
+      4,
+      5,
+      6,
+      1,
+      10
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "名古屋市周辺",
+        "reach": {
+          "mt": 0.76,
+          "gb": 0.12
+        }
+      },
+      {
+        "name": "尾張北部（一宮・犬山）",
+        "reach": {
+          "mt": 0.71,
+          "gb": 0.43
+        }
+      },
+      {
+        "name": "尾張西部・海部（津島・弥富）",
+        "reach": {
+          "mt": 0.84,
+          "gb": 0.21
+        }
+      },
+      {
+        "name": "知多半島（半田・常滑）",
+        "reach": {
+          "mt": 0.77
+        }
+      },
+      {
+        "name": "西三河（岡崎・豊田）",
+        "reach": {
+          "mt": 0.37,
+          "gb": 0.06
+        }
+      },
+      {
+        "name": "東三河（豊橋・豊川）",
+        "reach": {
+          "mt": 0.13
+        }
+      }
+    ]
+  },
+  {
+    "name": "三重県",
+    "group": "東海",
+    "remote": [
+      3,
+      4,
+      5,
+      6,
+      1,
+      null
+    ],
+    "own": "mt",
+    "areas": [
+      {
+        "name": "北勢（桑名・四日市）",
+        "reach": {
+          "mt": 0.98,
+          "tva": 0.78,
+          "gb": 0.15
+        }
+      },
+      {
+        "name": "中勢（津・松阪）",
+        "reach": {
+          "mt": 0.98,
+          "tva": 0.36
+        }
+      },
+      {
+        "name": "伊勢志摩（伊勢・鳥羽）",
+        "reach": {
+          "mt": 0.94,
+          "tva": 0.13
+        }
+      },
+      {
+        "name": "伊賀（伊賀・名張）",
+        "reach": {
+          "mt": 0.94,
+          "tva": 0.17,
+          "kb": 0.18,
+          "nr": 0.19
+        }
+      },
+      {
+        "name": "東紀州（尾鷲・熊野）",
+        "reach": {
+          "mt": 0.87,
+          "tva": 0.04,
+          "wk": 0.19
+        }
+      }
+    ]
+  },
+  {
+    "name": "滋賀県",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      null
+    ],
+    "own": "bw",
+    "areas": [
+      {
+        "name": "大津・湖南",
+        "reach": {
+          "bw": 0.98,
+          "kb": 0.57,
+          "tvo": 0.38
+        }
+      },
+      {
+        "name": "湖東（彦根・近江八幡）",
+        "reach": {
+          "bw": 0.96,
+          "kb": 0.14,
+          "tvo": 0.11
+        }
+      },
+      {
+        "name": "湖北（長浜・米原）",
+        "reach": {
+          "bw": 0.93,
+          "kb": 0.06
+        }
+      },
+      {
+        "name": "湖西（高島）",
+        "reach": {
+          "bw": 0.89,
+          "kb": 0.18
+        }
+      }
+    ]
+  },
+  {
+    "name": "京都府",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      null
+    ],
+    "own": "kb",
+    "areas": [
+      {
+        "name": "京都市・乙訓",
+        "reach": {
+          "kb": 0.98,
+          "tvo": 0.46,
+          "bw": 0.18
+        }
+      },
+      {
+        "name": "山城（宇治・木津川）",
+        "reach": {
+          "kb": 0.93,
+          "tvo": 0.6,
+          "nr": 0.19
+        }
+      },
+      {
+        "name": "丹波（亀岡・福知山）",
+        "reach": {
+          "kb": 0.87,
+          "tvo": 0.12,
+          "sn": 0.18
+        }
+      },
+      {
+        "name": "丹後（舞鶴・京丹後）",
+        "reach": {
+          "kb": 0.73,
+          "tvo": 0.06,
+          "sn": 0.13
+        }
+      }
+    ]
+  },
+  {
+    "name": "大阪府",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "大阪市・北摂",
+        "reach": {
+          "tvo": 0.99,
+          "sn": 0.66,
+          "kb": 0.34
+        }
+      },
+      {
+        "name": "北河内・中河内",
+        "reach": {
+          "tvo": 0.98,
+          "sn": 0.44,
+          "kb": 0.32
+        }
+      },
+      {
+        "name": "堺・泉州",
+        "reach": {
+          "tvo": 0.98,
+          "sn": 0.81
+        }
+      },
+      {
+        "name": "南河内",
+        "reach": {
+          "tvo": 0.97,
+          "sn": 0.33,
+          "nr": 0.13
+        }
+      }
+    ]
+  },
+  {
+    "name": "兵庫県",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      null
+    ],
+    "own": "sn",
+    "areas": [
+      {
+        "name": "阪神間・神戸",
+        "reach": {
+          "sn": 0.98,
+          "tvo": 0.71,
+          "kb": 0.13
+        }
+      },
+      {
+        "name": "播磨（明石・姫路）",
+        "reach": {
+          "sn": 0.97,
+          "tvo": 0.26
+        }
+      },
+      {
+        "name": "丹波（丹波篠山）",
+        "reach": {
+          "sn": 0.79,
+          "tvo": 0.12,
+          "kb": 0.39
+        }
+      },
+      {
+        "name": "但馬（豊岡・養父）",
+        "reach": {
+          "sn": 0.74,
+          "tvo": 0.07
+        }
+      },
+      {
+        "name": "淡路島",
+        "reach": {
+          "sn": 0.94,
+          "tvo": 0.25,
+          "wk": 0.08
+        }
+      }
+    ]
+  },
+  {
+    "name": "奈良県",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      null
+    ],
+    "own": "nr",
+    "areas": [
+      {
+        "name": "奈良・生駒",
+        "reach": {
+          "nr": 0.98,
+          "tvo": 0.67,
+          "kb": 0.29
+        }
+      },
+      {
+        "name": "中和（橿原・大和高田）",
+        "reach": {
+          "nr": 0.95,
+          "tvo": 0.36,
+          "kb": 0.1
+        }
+      },
+      {
+        "name": "宇陀・東部",
+        "reach": {
+          "nr": 0.85,
+          "tvo": 0.15,
+          "mt": 0.11
+        }
+      },
+      {
+        "name": "吉野・南部",
+        "reach": {
+          "nr": 0.73,
+          "tvo": 0.07
+        }
+      }
+    ]
+  },
+  {
+    "name": "和歌山県",
+    "group": "近畿",
+    "remote": [
+      1,
+      10,
+      4,
+      6,
+      8,
+      null
+    ],
+    "own": "wk",
+    "areas": [
+      {
+        "name": "和歌山市・紀北",
+        "reach": {
+          "wk": 0.98,
+          "tvo": 0.37,
+          "sn": 0.29
+        }
+      },
+      {
+        "name": "紀中（有田・御坊）",
+        "reach": {
+          "wk": 0.95,
+          "tvo": 0.1
+        }
+      },
+      {
+        "name": "紀南（田辺・白浜）",
+        "reach": {
+          "wk": 0.88,
+          "tvo": 0.03
+        }
+      },
+      {
+        "name": "新宮・東牟婁",
+        "reach": {
+          "wk": 0.77,
+          "mt": 0.19
+        }
+      }
+    ]
+  },
+  {
+    "name": "鳥取県",
+    "group": "中国",
+    "remote": [
+      3,
+      1,
+      6,
+      null,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "東部（鳥取・岩美）",
+        "reach": {}
+      },
+      {
+        "name": "中部（倉吉・北栄）",
+        "reach": {}
+      },
+      {
+        "name": "西部（米子・境港）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "島根県",
+    "group": "中国",
+    "remote": [
+      3,
+      1,
+      6,
+      null,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "松江・安来",
+        "reach": {}
+      },
+      {
+        "name": "出雲・大田",
+        "reach": {}
+      },
+      {
+        "name": "浜田・江津",
+        "reach": {}
+      },
+      {
+        "name": "益田・津和野",
+        "reach": {}
+      },
+      {
+        "name": "隠岐諸島",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "岡山県",
+    "group": "中国",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "県南（岡山・倉敷）",
+        "reach": {
+          "tsc": 0.99
+        }
+      },
+      {
+        "name": "備前（備前・赤磐）",
+        "reach": {
+          "tsc": 0.96
+        }
+      },
+      {
+        "name": "備中西部（笠岡・井原）",
+        "reach": {
+          "tsc": 0.94
+        }
+      },
+      {
+        "name": "県北（津山・真庭）",
+        "reach": {
+          "tsc": 0.81
+        }
+      },
+      {
+        "name": "新見・高梁",
+        "reach": {
+          "tsc": 0.83
+        }
+      }
+    ]
+  },
+  {
+    "name": "広島県",
+    "group": "中国",
+    "remote": [
+      1,
+      4,
+      3,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "広島市・廿日市",
+        "reach": {}
+      },
+      {
+        "name": "呉・東広島",
+        "reach": {}
+      },
+      {
+        "name": "備後（福山・尾道）",
+        "reach": {}
+      },
+      {
+        "name": "備北（三次・庄原）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "山口県",
+    "group": "中国",
+    "remote": [
+      1,
+      4,
+      3,
+      5,
+      null,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "下関・長門",
+        "reach": {
+          "tvq": 0.37
+        }
+      },
+      {
+        "name": "山口・防府",
+        "reach": {
+          "tvq": 0.13
+        }
+      },
+      {
+        "name": "周南・下松",
+        "reach": {
+          "tvq": 0.08
+        }
+      },
+      {
+        "name": "岩国・柳井",
+        "reach": {
+          "tvq": 0.03
+        }
+      },
+      {
+        "name": "宇部・山陽小野田",
+        "reach": {
+          "tvq": 0.21
+        }
+      }
+    ]
+  },
+  {
+    "name": "徳島県",
+    "group": "四国",
+    "remote": [
+      3,
+      1,
+      null,
+      null,
+      null,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "徳島市・板野",
+        "reach": {
+          "tvo": 0.57,
+          "sn": 0.61,
+          "kb": 0.22
+        }
+      },
+      {
+        "name": "県東南（阿南・海部）",
+        "reach": {
+          "tvo": 0.31,
+          "sn": 0.39,
+          "wk": 0.16
+        }
+      },
+      {
+        "name": "県西（美馬・三好）",
+        "reach": {
+          "tvo": 0.14,
+          "sn": 0.18
+        }
+      },
+      {
+        "name": "鳴門・北部",
+        "reach": {
+          "tvo": 0.64,
+          "sn": 0.68
+        }
+      }
+    ]
+  },
+  {
+    "name": "香川県",
+    "group": "四国",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "高松・小豆島",
+        "reach": {
+          "tsc": 0.97
+        }
+      },
+      {
+        "name": "中讃（丸亀・坂出）",
+        "reach": {
+          "tsc": 0.96
+        }
+      },
+      {
+        "name": "西讃（観音寺・三豊）",
+        "reach": {
+          "tsc": 0.91
+        }
+      },
+      {
+        "name": "東讃（さぬき・東かがわ）",
+        "reach": {
+          "tsc": 0.92,
+          "sn": 0.13
+        }
+      }
+    ]
+  },
+  {
+    "name": "愛媛県",
+    "group": "四国",
+    "remote": [
+      1,
+      4,
+      6,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "中予（松山・伊予）",
+        "reach": {}
+      },
+      {
+        "name": "東予（今治・西条）",
+        "reach": {}
+      },
+      {
+        "name": "新居浜・四国中央",
+        "reach": {}
+      },
+      {
+        "name": "南予（宇和島・大洲）",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "高知県",
+    "group": "四国",
+    "remote": [
+      1,
+      4,
+      6,
+      null,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "高知市・中央部",
+        "reach": {}
+      },
+      {
+        "name": "東部（安芸・室戸）",
+        "reach": {}
+      },
+      {
+        "name": "西部（四万十・宿毛）",
+        "reach": {}
+      },
+      {
+        "name": "嶺北・仁淀川",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "福岡県",
+    "group": "九州・沖縄",
+    "remote": [
+      3,
+      5,
+      4,
+      1,
+      8,
+      7
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "福岡市・糸島",
+        "reach": {
+          "tvq": 0.99
+        }
+      },
+      {
+        "name": "北九州・京築",
+        "reach": {
+          "tvq": 0.98
+        }
+      },
+      {
+        "name": "筑豊（飯塚・直方）",
+        "reach": {
+          "tvq": 0.96
+        }
+      },
+      {
+        "name": "筑後（久留米・大牟田）",
+        "reach": {
+          "tvq": 0.95
+        }
+      }
+    ]
+  },
+  {
+    "name": "佐賀県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      null,
+      null,
+      null,
+      3,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "佐賀市・鳥栖",
+        "reach": {
+          "tvq": 0.85
+        }
+      },
+      {
+        "name": "唐津・東松浦",
+        "reach": {
+          "tvq": 0.76
+        }
+      },
+      {
+        "name": "武雄・多久",
+        "reach": {
+          "tvq": 0.59
+        }
+      },
+      {
+        "name": "伊万里・有田",
+        "reach": {
+          "tvq": 0.45
+        }
+      },
+      {
+        "name": "鹿島・太良",
+        "reach": {
+          "tvq": 0.51
+        }
+      }
+    ]
+  },
+  {
+    "name": "長崎県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      4,
+      3,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "長崎・西彼",
+        "reach": {}
+      },
+      {
+        "name": "佐世保・県北",
+        "reach": {
+          "tvq": 0.15
+        }
+      },
+      {
+        "name": "諫早・大村",
+        "reach": {
+          "tvq": 0.11
+        }
+      },
+      {
+        "name": "島原半島",
+        "reach": {}
+      },
+      {
+        "name": "五島列島",
+        "reach": {}
+      },
+      {
+        "name": "壱岐・対馬",
+        "reach": {
+          "tvq": 0.14
+        }
+      }
+    ]
+  },
+  {
+    "name": "熊本県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      4,
+      3,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "熊本市・県央",
+        "reach": {
+          "tvq": 0.19
+        }
+      },
+      {
+        "name": "荒尾・玉名",
+        "reach": {
+          "tvq": 0.33
+        }
+      },
+      {
+        "name": "阿蘇・県北",
+        "reach": {
+          "tvq": 0.07
+        }
+      },
+      {
+        "name": "八代・県南",
+        "reach": {
+          "tvq": 0.07
+        }
+      },
+      {
+        "name": "天草",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "大分県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      4,
+      3,
+      5,
+      null,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "大分・別府",
+        "reach": {
+          "tvq": 0.09
+        }
+      },
+      {
+        "name": "中津・宇佐",
+        "reach": {
+          "tvq": 0.24
+        }
+      },
+      {
+        "name": "日田・玖珠",
+        "reach": {
+          "tvq": 0.16
+        }
+      },
+      {
+        "name": "佐伯・臼杵",
+        "reach": {}
+      },
+      {
+        "name": "豊後大野・竹田",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "宮崎県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      3,
+      6,
+      null,
+      3,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "宮崎市・県央",
+        "reach": {}
+      },
+      {
+        "name": "都城・北諸県",
+        "reach": {}
+      },
+      {
+        "name": "延岡・日向",
+        "reach": {}
+      },
+      {
+        "name": "日南・串間",
+        "reach": {}
+      },
+      {
+        "name": "西都・児湯",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "鹿児島県",
+    "group": "九州・沖縄",
+    "remote": [
+      3,
+      4,
+      1,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "鹿児島市周辺",
+        "reach": {}
+      },
+      {
+        "name": "薩摩（川内・出水）",
+        "reach": {}
+      },
+      {
+        "name": "大隅（鹿屋・志布志）",
+        "reach": {}
+      },
+      {
+        "name": "霧島・姶良",
+        "reach": {}
+      },
+      {
+        "name": "種子島・屋久島",
+        "reach": {}
+      },
+      {
+        "name": "奄美群島",
+        "reach": {}
+      }
+    ]
+  },
+  {
+    "name": "沖縄県",
+    "group": "九州・沖縄",
+    "remote": [
+      1,
+      null,
+      3,
+      5,
+      8,
+      null
+    ],
+    "own": "",
+    "areas": [
+      {
+        "name": "那覇・浦添",
+        "reach": {}
+      },
+      {
+        "name": "中南部（沖縄市・うるま）",
+        "reach": {}
+      },
+      {
+        "name": "南部（糸満・豊見城）",
+        "reach": {}
+      },
+      {
+        "name": "北部（名護・本部）",
+        "reach": {}
+      },
+      {
+        "name": "宮古諸島",
+        "reach": {}
+      },
+      {
+        "name": "八重山諸島",
+        "reach": {}
+      }
+    ]
+  }
+];
+const SOURCES = [
+  {
+    "title": "A-PAB 地デジ放送局情報",
+    "url": "https://www.apab.or.jp/chideji/"
+  },
+  {
+    "title": "A-PAB エリアのめやす",
+    "url": "https://www.apab.or.jp/chideji/tvarea/"
+  },
+  {
+    "title": "テレビ愛知 サービスエリアQ&A",
+    "url": "https://tv-aichi.co.jp/info/d_ques.html"
+  },
+  {
+    "title": "三重テレビ 会社概要・サービスエリア",
+    "url": "https://www.mietv.com/company/greeting/"
+  },
+  {
+    "title": "フレッツ・テレビ 視聴可能チャンネル",
+    "url": "https://flets-w.com/opt/ftv/terms/channel.html"
+  },
+  {
+    "title": "プリキュア公式 放送情報（2026年）",
+    "url": "https://www.toei-anim.co.jp/tv/precure/onair/"
+  },
+  {
+    "title": "テレビ東京 TXNネットワーク",
+    "url": "https://www.tv-tokyo.co.jp/index/txn/"
+  },
+  {
+    "title": "マスプロ電工 地デジチャンネル表（2025年3月）",
+    "url": "https://www.maspro.co.jp/wp-content/themes/maspro/file/reference/tv-channel-list.pdf"
+  },
+  {
+    "title": "スターキャット 地域別サービス提供エリア",
+    "url": "https://www.starcat.co.jp/service_area/"
+  },
+  {
+    "title": "知多メディアス 地域別サービスエリア",
+    "url": "https://www.medias.co.jp/recommend-point/service_area/"
+  },
+  {
+    "title": "CTY・CNS サービス提供エリア",
+    "url": "https://cty-cns.jp/company/service/"
+  },
+  {
+    "title": "ZTV サービス提供エリア",
+    "url": "https://www.ztv.co.jp/service/area.html"
+  },
+  {
+    "title": "BAN-BAN チャンネルの視聴地域",
+    "url": "https://www.banban.jp/support/faq/consideration/"
+  },
+  {
+    "title": "倉敷ケーブルテレビ サービスエリア",
+    "url": "https://www.kct.co.jp/join/area/"
+  },
+  {
+    "title": "NHK松江「しまねっと」2026年改編情報",
+    "url": "https://ww4.sanin-chuo.co.jp/livingyell/special-topic/NHKshimanettoguide"
+  },
+  {
+    "title": "NHK鳥取「いろ★ドリ」番組情報",
+    "url": "https://bangumi.org/tv_events/AmMMQA4-UAM?overwrite_area=49"
+  },
+  {
+    "title": "テレビ東京『ポケットモンスター』放送局別の曜日・時刻",
+    "url": "https://www.tv-tokyo.co.jp/anime/pocketmonster/onair/"
+  },
+  {
+    "title": "メ〜テレ『ドデスカ！』",
+    "url": "https://www.nagoyatv.com/dode/"
+  },
+  {
+    "title": "朝日放送テレビ『おはよう朝日です』",
+    "url": "https://www.asahi.co.jp/ohaasa/"
+  },
+  {
+    "title": "中京テレビ 番組一覧",
+    "url": "https://www.ctv.co.jp/program/list.html"
+  },
+  {
+    "title": "ビデオリサーチ 2026年10月 アニメ番組放送時刻",
+    "url": "https://www.videor.co.jp/audience/2026/10/92799.html"
+  },
+  {
+    "title": "A-PAB アナログ放送の終了沿革",
+    "url": "https://www.apab.or.jp/about/outline/history/"
+  },
+  {
+    "title": "ABS秋田放送 修学旅行テレビCM",
+    "url": "https://www.akita-abs.co.jp/schooltrip/"
+  },
+  {
+    "title": "AKT秋田テレビ 修学旅行情報CM",
+    "url": "https://www.akt.co.jp/travelcm"
+  },
+  {
+    "title": "長野県 北信・東信・中信・南信の区分",
+    "url": "https://www.pref.nagano.lg.jp/kensetsu/infra/tochi/riyo/kokudoriyo/documents/tochiriyokeikaku.pdf"
+  },
+  {
+    "title": "e-Stat 市区町村コード",
+    "url": "https://www.e-stat.go.jp/municipalities/cities"
+  },
+  {
+    "title": "A-PAB アナログ放送の終了沿革",
+    "url": "https://www.apab.or.jp/about/outline/history/"
+  },
+  {
+    "title": "ABS秋田放送 修学旅行テレビCM",
+    "url": "https://www.akita-abs.co.jp/schooltrip/"
+  },
+  {
+    "title": "AKT秋田テレビ 修学旅行情報CM",
+    "url": "https://www.akt.co.jp/travelcm"
+  },
+  {
+    "title": "長野県 北信・東信・中信・南信の区分",
+    "url": "https://www.pref.nagano.lg.jp/kensetsu/infra/tochi/riyo/kokudoriyo/documents/tochiriyokeikaku.pdf"
+  },
+  {
+    "title": "e-Stat 市区町村コード",
+    "url": "https://www.e-stat.go.jp/municipalities/cities"
+  },
+  {
+    "title": "A-PAB アナログ放送の終了沿革",
+    "url": "https://www.apab.or.jp/about/outline/history/"
+  },
+  {
+    "title": "ABS秋田放送 修学旅行テレビCM",
+    "url": "https://www.akita-abs.co.jp/schooltrip/"
+  },
+  {
+    "title": "AKT秋田テレビ 修学旅行情報CM",
+    "url": "https://www.akt.co.jp/travelcm"
+  },
+  {
+    "title": "長野県 北信・東信・中信・南信の区分",
+    "url": "https://www.pref.nagano.lg.jp/kensetsu/infra/tochi/riyo/kokudoriyo/documents/tochiriyokeikaku.pdf"
+  },
+  {
+    "title": "e-Stat 市区町村コード",
+    "url": "https://www.e-stat.go.jp/municipalities/cities"
+  },
+  {
+    "title": "CBC テレビ史 天才クイズ放送1967〜2004年",
+    "url": "https://www.hicbc.com/history/"
+  },
+  {
+    "title": "テレビ大阪 1982年開局",
+    "url": "https://www.tv-osaka.co.jp/corporate/company.html"
+  },
+  {
+    "title": "テレビ北海道 1989年開局",
+    "url": "https://www.tv-hokkaido.co.jp/company/about/"
+  },
+  {
+    "title": "テレビ愛知 会社概要と開局年",
+    "url": "https://tv-aichi.co.jp/tva/"
+  },
+  {
+    "title": "TVQ九州放送 1991年開局",
+    "url": "https://tvq.co.jp/history35th/program/"
+  },
+  {
+    "title": "岩手めんこいテレビ 1991年開局",
+    "url": "https://www.menkoi-tv.co.jp/company/index.html"
+  },
+  {
+    "title": "A-PAB アナログ放送の終了沿革",
+    "url": "https://www.apab.or.jp/about/outline/history/"
+  },
+  {
+    "title": "ABS秋田放送 修学旅行テレビCM",
+    "url": "https://www.akita-abs.co.jp/schooltrip/"
+  },
+  {
+    "title": "AKT秋田テレビ 修学旅行情報CM",
+    "url": "https://www.akt.co.jp/travelcm"
+  },
+  {
+    "title": "長野県 北信・東信・中信・南信の区分",
+    "url": "https://www.pref.nagano.lg.jp/kensetsu/infra/tochi/riyo/kokudoriyo/documents/tochiriyokeikaku.pdf"
+  },
+  {
+    "title": "e-Stat 市区町村コード",
+    "url": "https://www.e-stat.go.jp/municipalities/cities"
+  }
+];
+const INDIES = {mx:'TOKYO MX',tk:'tvk',ct:'チバテレ',sv:'テレ玉',gm:'群馬テレビ',tg:'とちぎテレビ',gb:'ぎふチャン',mt:'三重テレビ',bw:'びわ湖放送',kb:'KBS京都',sn:'サンテレビ',nr:'奈良テレビ',wk:'テレビ和歌山'};
+const INDIE_REMOTE={mx:9,tk:3,ct:3,sv:3,gm:3,tg:3,gb:8,mt:7,bw:3,kb:5,sn:3,nr:9,wk:5};
+const TX_BASE={tvh:['北海道'],tva:['愛知県'],tvo:['大阪府'],tsc:['岡山県','香川県'],tvq:['福岡県']};
+const GROUP_HINTS = {
+  '北海道':'北海道日本ハムファイターズ', '東北':'東北楽天ゴールデンイーグルス',
+  '東海':'中日ドラゴンズ', '近畿':'阪神タイガース', '中国':'広島東洋カープ', '九州・沖縄':'福岡ソフトバンクホークス'
+};
+// First six: broad characteristics; later: local broadcaster fingerprints.
+const QUESTIONS = [
+{id:'nhk3',text:'NHK総合は、リモコンの「3」で映る？',desc:'地上波のリモコン番号について。NHK Eテレではなく総合です。',type:'remote',key:'NHK',value:3,phase:0},
+{id:'nhk1',text:'NHK総合は、リモコンの「1」で映る？',desc:'別の地域に旅行したときの設定ではなく、普段のテレビで。',type:'remote',key:'NHK',value:1,phase:0},
+{id:'tbs5',text:'「5」を押すと、TBS系列の番組が映る？',desc:'民放の系列を聞いています。局名がTBSである必要はありません。',type:'remote',key:'TBS',value:5,phase:0},
+{id:'ntv10',text:'「10」を押すと、日本テレビ系列の局が映る？',desc:'日テレ系の地方局も含みます。',type:'remote',key:'NTV',value:10,phase:0},
+{id:'ntv4',text:'リモコンの「4」は、日テレ系のチャンネル？',desc:'地上デジタル放送の選局番号です。',type:'remote',key:'NTV',value:4,phase:0},
+{id:'cx1',text:'「1」にフジテレビ系のチャンネルが入っている？',desc:'フジテレビそのものではなく系列局も含みます。',type:'remote',key:'CX',value:1,phase:0},
+{id:'ntv1',text:'「1」は日本テレビ系のチャンネル？',desc:'地方局の名称は問いません。',type:'remote',key:'NTV',value:1,phase:0},
+{id:'ex5',text:'「5」はテレビ朝日系列のチャンネル？',desc:'地上波の民放について。',type:'remote',key:'EX',value:5,phase:0},
+{id:'tbs6',text:'リモコンの「6」にTBS系列が入る？',desc:'局名がTBSでなくても大丈夫。',type:'remote',key:'TBS',value:6,phase:0},
+{id:'tx7',text:'リモコンの「7」でテレ東系列が映る？',desc:'地上波のテレビ東京系列を意味します。',type:'remote',key:'TX',value:7,phase:0},
+{id:'tx10',text:'リモコンの「10」でテレ東系列が映る？',desc:'ケーブル経由なども含め、実際に選局できる場合を想像して。',type:'remote',key:'TX',value:10,phase:0},
+{id:'tbs3',text:'「3」が、NHKではなくTBS系列の局だったりする？',desc:'メインで見ている地上波の番号を基準にします。',type:'remote',key:'TBS',value:3,phase:0},
+{id:'tbs1',text:'「1」を押すとTBS系列が映る？',desc:'リモコン番号から地元の放送事情を推定します。',type:'remote',key:'TBS',value:1,phase:0},
+{id:'cx8',text:'リモコンの「8」はフジテレビ系列？',desc:'受信している局のリモコン番号です。',type:'remote',key:'CX',value:8,phase:0},
+{id:'ex6',text:'「6」を押すとテレビ朝日系列が映る？',desc:'テレビ朝日そのものだけでなく系列局も含みます。',type:'remote',key:'EX',value:6,phase:0},
+{id:'txnow',text:'地上波で、テレ東の系列番組をほぼ同時に見られる？',desc:'BSテレ東・TVer・ネット配信ではありません。',type:'txDirect',phase:0},
+{id:'few2',text:'地元の民放地上波、2局以下しかない気がする？',desc:'他県の電波を拾える場合は、その局も数えて構いません。',type:'few',value:2,phase:0},
+{id:'few3',text:'地元の民放地上波、3局程度に収まる？',desc:'NHKやBS/CSを除いたおおよその数です。',type:'few',value:3,phase:0},
+{id:'ind3',text:'「3」に、全国ネットではない独立テレビ局がある？',desc:'地域密着の番組や通販、地元スポーツなどを流す局です。',type:'indRemote',value:3,phase:0},
+{id:'ind5',text:'「5」に、独立テレビ局が割り当てられている？',desc:'全国ネットの民放系列には属さない局のことです。',type:'indRemote',value:5,phase:0},
+{id:'ind7',text:'「7」に、全国ネットとは別の独立局がある？',desc:'リモコン番号を覚えている範囲で。',type:'indRemote',value:7,phase:0},
+{id:'ind8',text:'「8」がフジ系ではなく、地元の独立局だったりする？',desc:'局名ではなく、系列・番組の雰囲気で判断してもOK。',type:'indRemote',value:8,phase:0},
+{id:'ind9',text:'「9」に独立局が入っている？',desc:'一部の地域で特徴的なリモコン配置です。',type:'indRemote',value:9,phase:0},
+{id:'precure830',text:'日曜朝8時30分ごろに、地上波でプリキュアが始まる？',desc:'2026年「名探偵プリキュア！」の通常放送時刻が基準。',type:'precure830',phase:0},
+{id:'precure615',text:'日曜日の朝6時30分ごろ、プリキュアが地上波で放送される？',desc:'2026年版の放送情報にある一部地域の例外です。',type:'precure615',phase:0},
+{id:'nhk_irodori',text:'NHK総合の夕方6時ごろから「いろ★ドリ」というニュース番組がある？',desc:'2026年の地域別ニュース番組からの質問です。',type:'nhkProgram',key:'鳥取県',phase:2},
+{id:'nhk_shimanetto',text:'NHK総合の夕方ニュースの名前が「しまねっと」？',desc:'2026年春からの番組名を基準にしています。',type:'nhkProgram',key:'島根県',phase:2},
+{id:'delay',text:'東京で話題の番組が、地元では別の曜日や時間に流れることが多い？',desc:'ネット配信ではなく、地上波の放送時刻について。',type:'delay',phase:0},
+{id:'joint',text:'民放のニュースや天気予報で、隣の県の話題までセットで流れる？',desc:'県をまたいだ広域放送の特徴です。',type:'joint',phase:0},
+{id:'mix',text:'1局で日テレ系・フジ系など、異なる系列の番組が混じる？',desc:'毎週の番組表を見ると系列が混在するタイプ。',type:'mix',phase:0},
+{id:'baseballT',text:'地元局で中日ドラゴンズの話題がかなり目立つ？',desc:'ニュース・野球中継・地元スポーツ番組など。',type:'team',key:'東海',phase:2},
+{id:'baseballH',text:'地元局で阪神タイガースの話題がかなり目立つ？',desc:'ニュース・野球中継・地元スポーツ番組など。',type:'team',key:'近畿',phase:2},
+{id:'baseballF',text:'地元局で日本ハムファイターズの話題がよく出る？',desc:'地域スポーツニュースでの扱いを考えてください。',type:'team',key:'北海道',phase:2},
+{id:'baseballC',text:'地元局で広島カープの話題がかなり目立つ？',desc:'地域スポーツニュースでの扱いを考えてください。',type:'team',key:'中国',phase:2},
+{id:'baseballS',text:'地元局でソフトバンクホークスの話題がかなり目立つ？',desc:'地域スポーツニュースでの扱いを考えてください。',type:'team',key:'九州・沖縄',phase:2},
+{id:'baseballE',text:'地元局で楽天イーグルスの話題がよく出る？',desc:'ローカルのスポーツニュースでの扱いを考えてください。',type:'team',key:'東北',phase:2},
+{id:'mx',text:'テレビの番組表に「TOKYO MX」が載っている？',desc:'ネット配信ではなく地デジ・CATVの番組表で。',type:'station',key:'mx',phase:1},
+{id:'tk',text:'「tvk」の番組が、地上波で普通に見られる？',desc:'テレビ神奈川のことです。',type:'station',key:'tk',phase:1},
+{id:'ct',text:'「チバテレ」がテレビの番組表にある？',desc:'普段のテレビで選局できるかを答えてください。',type:'station',key:'ct',phase:1},
+{id:'sv',text:'「テレ玉」が地上波で映る？',desc:'埼玉の独立放送局のことです。',type:'station',key:'sv',phase:1},
+{id:'gm',text:'「群馬テレビ」の番組表が見られる？',desc:'独立局の受信状況を確認します。',type:'station',key:'gm',phase:1},
+{id:'tg',text:'「とちぎテレビ」が映る？',desc:'独立局の受信状況を確認します。',type:'station',key:'tg',phase:1},
+{id:'gb',text:'「ぎふチャン」が地上波の番組表に載っている？',desc:'岐阜放送のテレビ編成を指します。',type:'station',key:'gb',phase:1},
+{id:'mt',text:'「三重テレビ」を、家のテレビで選べる？',desc:'越境受信もあり得るため、映るだけで県名は決めません。',type:'station',key:'mt',phase:1},
+{id:'bw',text:'「びわ湖放送」のチャンネルが映る？',desc:'地域の独立局について。',type:'station',key:'bw',phase:1},
+{id:'kb',text:'「KBS京都」のテレビ番組が映る？',desc:'ラジオではなく、テレビのことです。',type:'station',key:'kb',phase:1},
+{id:'sn',text:'「サンテレビ」の放送が映る？',desc:'阪神戦・独自編成などで知られる独立局です。',type:'station',key:'sn',phase:1},
+{id:'nr',text:'「奈良テレビ」の番組を普通に選局できる？',desc:'地域の独立局について。',type:'station',key:'nr',phase:1},
+{id:'wk',text:'「テレビ和歌山」が普通に映る？',desc:'地域の独立局について。',type:'station',key:'wk',phase:1},
+{id:'tva',text:'「テレビ愛知」が地上波で映る？',desc:'愛知県外で受信している可能性も考慮します。',type:'station',key:'tva',phase:1},
+{id:'tvo',text:'「テレビ大阪」の番組を地上波で見られる？',desc:'大阪府以外で映る場合もあります。',type:'station',key:'tvo',phase:1},
+{id:'tsc',text:'「テレビせとうち」が地上波で映る？',desc:'岡山と香川の両方を対象とする放送局です。',type:'station',key:'tsc',phase:1},
+{id:'tvq',text:'「TVQ九州放送」が映る？',desc:'福岡周辺では県境を越えて映る場合があります。',type:'station',key:'tvq',phase:1},
+{id:'tvh',text:'「テレビ北海道」の番組を地上波で受信できる？',desc:'北海道のテレビ東京系列局です。',type:'station',key:'tvh',phase:1},
+{id:'nk3',text:'NHK総合以外に、リモコン「3」に民放が入っている？',desc:'関東の独立局や、一部のTBS系列局などで見られます。',type:'anyPrivate3',phase:1},
+{id:'sunBaseball',text:'地上波で、阪神戦をかなり長時間中継する独立局がある？',desc:'テレビのスポーツ中継の特徴を聞いています。',type:'station',key:'sn',phase:2}
+];
+// Local on-screen logos can distinguish prefectures that have identical network/channel layouts.
+// These are network/service areas rather than simple prefecture-name questions.
+const LOCAL_BRANDS = [
+ ['stv','札幌テレビ（STV）',['北海道']],
+ ['rab','青森放送（RAB）',['青森県']],
+ ['tvi','テレビ岩手（TVI）',['岩手県']],
+ ['tbc','東北放送（tbc）',['宮城県']],
+ ['abs','秋田放送（ABS）',['秋田県']],
+ ['ybc','山形放送（YBC）',['山形県']],
+ ['fct','福島中央テレビ（FCT）',['福島県']],
+ ['teny','TeNYテレビ新潟',['新潟県']],
+ ['knb','北日本放送（KNB）',['富山県']],
+ ['hab','北陸朝日放送（HAB）',['石川県']],
+ ['fbc','福井放送（FBC）',['福井県']],
+ ['ybs','山梨放送（YBS）',['山梨県']],
+ ['sbc','信越放送（SBC）',['長野県']],
+ ['sbs','静岡放送（SBS）',['静岡県']],
+ ['cbc','CBCテレビ',['愛知県','岐阜県','三重県']],
+ ['mbs','毎日放送（MBS）',['大阪府','京都府','兵庫県','滋賀県','奈良県','和歌山県']],
+ ['bss','山陰放送（BSS）',['鳥取県','島根県']],
+ ['rsk','RSK山陽放送',['岡山県','香川県']],
+ ['rcc','中国放送（RCC）',['広島県']],
+ ['kry','山口放送（KRY）',['山口県']],
+ ['jrt','四国放送（JRT）',['徳島県']],
+ ['rnb','南海放送（RNB）',['愛媛県']],
+ ['kutv','テレビ高知（KUTV）',['高知県']],
+ ['kbc','九州朝日放送（KBC）',['福岡県']],
+ ['sts','サガテレビ（STS）',['佐賀県']],
+ ['nbc','長崎放送（NBC）',['長崎県']],
+ ['rkk','熊本放送（RKK）',['熊本県']],
+ ['obs','大分放送（OBS）',['大分県']],
+ ['umk','テレビ宮崎（UMK）',['宮崎県']],
+ ['mbc','南日本放送（MBC）',['鹿児島県']],
+ ['rbc','琉球放送（RBC）',['沖縄県']]
+].map(([key,name,prefs])=>({key,name,prefs}));
+const BRAND_LOOKUP=Object.fromEntries(LOCAL_BRANDS.map(b=>[b.key,b]));
+for(const b of LOCAL_BRANDS)QUESTIONS.push({id:'brand_'+b.key,text:`地元のテレビを見ていると「${b.name}」の局名やロゴを見かける？`,desc:'県名を聞いているのではなく、実際に映る地上波の局です。',type:'brand',key:b.key,phase:2});
+// Service footprints were checked against CATV operator publications. Relative reception
+// likelihoods remain heuristic: eligibility does not imply a household subscribes.
+const CABLE_BRANDS=[
+ ['starcat','スターキャット'],['medias','知多メディアス'],
+ ['cty','CTY / CNS'],['ztv','ZTV'],['banban','BAN-BANチャンネル'],
+ ['kct','倉敷ケーブルテレビ（KCT）'],['oni','oniビジョン'],['ncn','NCN地域情報チャンネル']
+];
+for(const [key,name] of CABLE_BRANDS)QUESTIONS.push({id:'catv_'+key,text:`テレビの番組表に「${name}」の地域情報チャンネルがある？`,desc:'ケーブル・光テレビに関する質問です。契約していないなら「いいえ」で大丈夫。',type:'cableBrand',key,phase:3});
+QUESTIONS.push({id:'catv_double_nhk',text:'地デジの「3」と「8」に、別々の地域版NHK総合が並んでいる？',desc:'一部CATVのチャンネル表で見られる独特の配置です。',type:'catvDualNHK',phase:3});
+// V2: visible-program clues. An aired programme is never assumed exclusive to its production network.
+// Time-of-day is the clue; out-of-network broadcasts are explicitly included where confirmed.
+const POKEMON_SLOTS={
+  fri1855:['岐阜県','奈良県'], // the six TX stations are added separately below
+  sat0730:['青森県','沖縄県'], sun0930:['秋田県','滋賀県'], fri1620:['岩手県'],
+  sun0615:['山形県','宮崎県'],sat0700:['宮城県','長崎県'],
+  sun0900:['福島県','熊本県'],
+  sun0630:['新潟県','長野県','福井県','徳島県','愛媛県','高知県','佐賀県','大分県'],
+  sat1700:['山梨県'],sun0600:['富山県'],sat1600:['石川県'],
+  sat0600:['静岡県'],wed1700:['三重県','和歌山県'],
+  sun1100:['京都府'],mon1621:['鳥取県','島根県'],sat1015:['広島県'],
+  sat0630:['山口県'],sat1115:['鹿児島県']
+};
+const PROGRAM_CLUES=[
+ ['pokemon_fri','金曜の夕方7時ごろ、地上波でアニメ「ポケットモンスター」を放送している？','2026年の放送時間。テレ東系以外でもこの時刻に放送される地域があります。','pokemonSlot','fri1855',0,'pokemon'],
+ ['precure_sun','日曜の朝8時30分ごろに、地上波で「プリキュア」が放送される？','2026年の放送時刻。山陰などでは別の時間のことも。','precure830',null,0,'precure'],
+ ['conan_sat','土曜の夕方6時ごろに、地上波で「名探偵コナン」が始まる？','2026年の通常枠。系列外での時差放送もあるので、同時刻かを答えてね。','networkSlot','NTV',0,'conan'],
+ ['sazae_sun','日曜の夕方6時30分ごろに「サザエさん」が始まる？','特別編成は除き、いつもの地上波の放送時刻を思い出してね。','networkSlot','CX',0,'sazae'],
+ ['precure_earlier','「プリキュア」は、日曜の8時30分ごろよりもっと早く放送されている？','日曜6時30分ごろなどの例外を想定。アプリ配信は除いてね。','precure615',null,1,'precure'],
+ ['dora_sat','土曜の午後5時ごろから、地上波で「ドラえもん」が始まる？','2026年頃の通常時刻です。地域によって違うことがあります。','networkSlot','EX',1,'dora'],
+ ['shin_sat','土曜の午後4時30分ごろから「クレヨンしんちゃん」を見られる？','2026年頃の通常放送時刻。系列外の放送もあるので決めつけません。','networkSlot','EX',1,'shin'],
+ ['maruko_sun','日曜の午後6時ごろに「ちびまる子ちゃん」が放送される？','2026年頃の通常放送時刻。','networkSlot','CX',1,'maruko'],
+ ['pokemon_morning_sat','「ポケットモンスター」が土曜日の朝に放送されている？','2026年の放送局一覧を参考にしています。','pokemonGroup','satam',1,'pokemon'],
+ ['pokemon_morning_sun','「ポケットモンスター」が日曜日の朝に放送されている？','2026年の放送局一覧。放送曜日の違いに注目します。','pokemonGroup','sunam',1,'pokemon'],
+ ['pokemon_weekday_pm','「ポケットモンスター」が平日の夕方、金曜以外にも放送される？','2026年の番組表を基準にしています。','pokemonGroup','weekdaypm',1,'pokemon'],
+ ['historic_pokemon','子どもの頃、地上波で「ポケットモンスター」を見た記憶がある？','昔の放送局・時刻は今と異なります。地域を決めつけず、ごく弱い手掛かりにします。','historic', 'TX',0,'nostalgia'],
+ ['historic_waratte','昔の平日お昼、「笑っていいとも！」をテレビで見た記憶がある？','2014年終了の番組。系列外放送・放送時刻差を考慮して弱い手掛かりにします。','historic','CX',0,'nostalgia'],
+ ['indie_tvhours','チャンネルを回していると、通販や独自の地域番組が多いテレビ局がある？','独立局以外でも通販は放送するので、これだけで地域を確定しないよ。','indieFlavor',null,0,'indie'],
+ ['news_covered','夕方のテレビニュースで、住んでいる県以外のニュースも日常的に多く流れていた？','広域局や越境受信、CATVなどで起こりやすい傾向です。','regionalMix',null,0,'habit'],
+ ['nhk_local','夕方6時台に、NHK総合で地元向けニュースに切り替わる？','全国ほぼ共通の仕組み。導入用の弱いヒントです。','gentle',null,0,'habit'],
+ ['pokemon_sun0630','日曜の朝6時30分ごろに、アニメ「ポケットモンスター」をやっている？','2026年の一部地域の通常時刻。系列を問いません。','pokemonSlot','sun0630',2,'pokemon'],
+ ['pokemon_sat0730','土曜の朝7時30分ごろに、アニメ「ポケットモンスター」をやっている？','2026年の一部地域の放送時刻。','pokemonSlot','sat0730',2,'pokemon'],
+ ['pokemon_sat0600','土曜の朝6時ごろに、アニメ「ポケットモンスター」が始まる？','2026年の一部地域の放送時刻。','pokemonSlot','sat0600',2,'pokemon'],
+ ['pokemon_sun0615','日曜の朝6時30分ごろに、アニメ「ポケットモンスター」が始まる？','2026年の一部地域の放送時刻。','pokemonSlot','sun0615',2,'pokemon'],
+ ['pokemon_wed1700','水曜の夕方5時ごろに、アニメ「ポケットモンスター」が始まる？','2026年の一部独立局などの放送時刻です。','pokemonSlot','wed1700',2,'pokemon'],
+ ['pokemon_mon1621','月曜の夕方4時30分ごろ、「ポケットモンスター」が放送される？','2026年の一部放送エリアでの時刻。','pokemonSlot','mon1621',2,'pokemon'],
+ ['pokemon_sun0930','日曜の朝9時30分ごろ、「ポケットモンスター」を見られる？','2026年の一部地域の放送時刻。','pokemonSlot','sun0930',2,'pokemon'],
+ ['pokemon_sat0700','土曜の朝7時ごろに「ポケットモンスター」が放送される？','2026年の一部地域の放送時刻。','pokemonSlot','sat0700',2,'pokemon'],
+ ['pokemon_fri1620','金曜の午後4時30分ごろに「ポケットモンスター」がある？','2026年の放送時刻を参考にしています。','pokemonSlot','fri1620',2,'pokemon'],
+ ['pokemon_sat1600','土曜の午後4時ごろに「ポケットモンスター」が放送される？','2026年の放送時刻を参考にしています。','pokemonSlot','sat1600',2,'pokemon'],
+ ['pokemon_sat1700','土曜の午後5時ごろに「ポケットモンスター」が放送される？','2026年の放送時刻を参考にしています。','pokemonSlot','sat1700',2,'pokemon'],
+ ['pokemon_sun1100','日曜の午前11時ごろに「ポケットモンスター」を放送している？','2026年の放送時刻を参考にしています。','pokemonSlot','sun1100',2,'pokemon'],
+ ['pokemon_sat1015','土曜の午前10時30分ごろに「ポケットモンスター」を見られる？','2026年の放送時刻を参考にしています。','pokemonSlot','sat1015',2,'pokemon'],
+ ['pokemon_sat0630','土曜の朝6時30分ごろに「ポケットモンスター」を放送している？','2026年の放送時刻を参考にしています。','pokemonSlot','sat0630',2,'pokemon'],
+ ['pokemon_sat1115','土曜の午前11時30分ごろに「ポケットモンスター」がある？','2026年の放送時刻を参考にしています。','pokemonSlot','sat1115',2,'pokemon'],
+ ['pokemon_sun0900','日曜の朝9時ごろに「ポケットモンスター」を見られる？','2026年の放送時刻を参考にしています。','pokemonSlot','sun0900',2,'pokemon'],
+ ['pokemon_sun0600','日曜の朝6時ごろに「ポケットモンスター」を放送している？','2026年の放送時刻を参考にしています。','pokemonSlot','sun0600',2,'pokemon']
+];
+for(const [id,t,desc,type,key,phase,topic] of PROGRAM_CLUES)
+ QUESTIONS.push({id:'pg_'+id,text:t,desc,type,key,phase,topic,source:type.startsWith('pokemon')?'https://www.tv-tokyo.co.jp/anime/pocketmonster/onair/':undefined});
+// Verified regional shows, especially useful after the national programmes have narrowed the field.
+const REGIONAL_PROGRAMS=[
+ ['ohayouasahi','朝のテレビに「おはよう朝日です」という番組があった？',['大阪府','京都府','兵庫県','滋賀県','奈良県','和歌山県'],'https://www.asahi.co.jp/ohaasa/'],
+ ['dodesuka','平日の朝、テレビで「ドデスカ！」という番組を見かけた？',['愛知県','岐阜県','三重県'],'https://www.nagoyatv.com/dode/'],
+ ['catch','夕方のニュースに「キャッチ！」という番組があった？',['愛知県','岐阜県','三重県'],'https://www.ctv.co.jp/program/list.html'],
+ ['psgold','金曜夜7時ごろに「PS純金」という地域密着番組が放送されていた？',['愛知県','岐阜県','三重県'],'https://www.ctv.co.jp/program/list.html'],
+ ['dosanko','平日夕方のテレビに「どさんこワイド179」という番組があった？',['北海道'],null],
+ ['telemarsa','NHKの夕方のニュース番組名が「てれまさ」だった？',['宮城県'],null],
+ ['marutto','NHKの夕方に「まるっと！」というニュースを見た記憶がある？',['愛知県','岐阜県','三重県'],null],
+ ['hotkansai','NHKの夕方ニュースが「ほっと関西」という名前だった？',['大阪府'],null],
+ ['nhkhotnorth','NHKの夕方に「ほっとニュース北海道」という名前が出てくる？',['北海道'],null],
+ ['nhk6fukuoka','NHKの夕方ニュースに「ロクいち！福岡」という名前が出てきた？',['福岡県'],null]
+];
+for(const [id,name,prefs,url] of REGIONAL_PROGRAMS)
+ QUESTIONS.push({id:'localprog_'+id,text:name,desc:'過去に放送されたことがある番組も含め、実際のテレビで見た経験を答えてください。県外の受信も考慮します。',type:'regionalProgram',key:id,prefs,phase:2,topic:'local_'+id,source:url||undefined});
+// Compound reception: do not infer a prefecture from a single station, use combinations.
+const PAIR_STATIONS=[
+ ['mt_tva','「三重テレビ」と「テレビ愛知」の両方を、同じテレビで見られる？','mt','tva'],
+ ['mt_gb','「三重テレビ」と「ぎふチャン」の両方を見られる？','mt','gb'],
+ ['tva_gb','「テレビ愛知」と「ぎふチャン」の両方を見られる？','tva','gb'],
+ ['mx_tvk','「TOKYO MX」と「tvk」の両方がテレビの番組表にある？','mx','tk'],
+ ['mx_ct','「TOKYO MX」と「チバテレ」の両方が映る？','mx','ct'],
+ ['mx_sv','「TOKYO MX」と「テレ玉」の両方が映る？','mx','sv'],
+ ['kb_sn','「KBS京都」と「サンテレビ」の両方が映る？','kb','sn'],
+ ['tvo_nr','「テレビ大阪」と「奈良テレビ」の両方が映る？','tvo','nr'],
+ ['sn_tvo','「サンテレビ」と「テレビ大阪」の両方が映る？','sn','tvo'],
+ ['bw_kb','「びわ湖放送」と「KBS京都」の両方が映る？','bw','kb']
+];
+for(const [id,text,k1,k2] of PAIR_STATIONS)
+ QUESTIONS.push({id:'pair_'+id,text,desc:'アンテナの向きやCATVの契約で変わるため、両方映ることは地域の確定材料ではありません。',type:'stationPair',pair:[k1,k2],phase:3,topic:'pair'});
+
+// V3 additions: programme-era provenance is a filter, not proof of geographic exclusivity.
+const V3_PROGRAMS=[
+ {id:'v3_monday9',text:'月曜の夜9時ごろに、毎週ドラマを見る習慣があった？ 「月9」と呼ばれる枠だよ。',desc:'昔の番組枠も含む。地域や時代により放送日が違うことがあります。',type:'eraFrame',key:'CX',topic:'drama',phase:0,popularity:1.18,firstYear:1987,lastYear:2026},
+ {id:'v3_tuesday_suspense',text:'昔、火曜の夜9時ごろから2時間サスペンスドラマが流れていたのを覚えている？',desc:'「火曜サスペンス劇場」（1981～2005年）を参考にしています。',type:'eraFrame',key:'NTV',topic:'drama',phase:1,popularity:1.1,firstYear:1981,lastYear:2005},
+ {id:'v3_saturday_suspense',text:'昔、土曜の夜9時ごろの2時間ドラマ枠をよく見た？',desc:'「土曜ワイド劇場」（1977～2017年）などの記憶。',type:'eraFrame',key:'EX',topic:'drama',phase:1,popularity:1.04,firstYear:1977,lastYear:2017},
+ {id:'v3_friday_movie',text:'金曜の夜9時ごろ、地上波で映画の放送を楽しみにしていた？',desc:'「金曜ロードショー」等の映画枠について。全国で見られるため弱めのヒントです。',type:'eraFrame',key:'NTV',topic:'movie',phase:0,popularity:1.13,firstYear:1985,lastYear:2026},
+ {id:'v3_tensaiquiz',text:'子どもの頃、着ぐるみのキャラクターが登場する「天才クイズ」をテレビで見た？',desc:'1967～2004年の通常放送を対象。後年の特番・映像配信は区別してね。',type:'eraRegional',prefs:['愛知県','岐阜県','三重県'],topic:'nostalgia',phase:2,popularity:1.45,firstYear:1967,lastYear:2004},
+ {id:'v3_night_scoop',text:'昔から「探偵！ナイトスクープ」を地上波でよく見ていた？',desc:'広い地域で放送・時差ネットされているため、これだけで特定しません。',type:'eraRegional',prefs:['大阪府','京都府','兵庫県','奈良県','滋賀県','和歌山県'],topic:'variety',phase:1,popularity:1.55,firstYear:1988,lastYear:2026,syndicated:true},
+ {id:'v3_suidou',text:'「水曜どうでしょう」を、地上波の再放送でよく見かけた？',desc:'全国で再放送歴があり、どの地域でも一律の決め手にはなりません。',type:'eraRegional',prefs:['北海道'],topic:'variety',phase:1,popularity:1.42,firstYear:1996,lastYear:2026,syndicated:true},
+ {id:'v3_omusubi',text:'テレビに「おにぎりあたためますか」という旅・グルメ番組が流れていた？',desc:'地域発の人気番組。県外での放送も多いので弱めの手掛かりです。',type:'eraRegional',prefs:['北海道'],topic:'variety',phase:2,popularity:1.24,firstYear:2003,lastYear:2026,syndicated:true},
+ {id:'v3_akita_travel',text:'修学旅行に行った児童・生徒の無事を伝えるテレビCMを見かけたことがある？',desc:'地域独特の放送文化。複数県で類似例があるため、単独では特定しません。',type:'localTrivia',prefs:['秋田県','山梨県'],topic:'tvTrivia',phase:2,popularity:1.1,firstYear:1970,lastYear:2026},
+ {id:'v3_niigata_newyear',text:'お正月、地元企業の短い年賀CMが立て続けに流れるのを見たことがある？',desc:'年賀CMは複数地域にあり、地域色の強さを弱い手掛かりにします。',type:'localTrivia',prefs:['新潟県'],topic:'tvTrivia',phase:1,popularity:1.05,firstYear:1980,lastYear:2026,syndicated:true},
+ {id:'v3_analog_tokyo',text:'昔のアナログテレビで、4番が日本テレビ、6番がTBS、8番がフジテレビだった？',desc:'地上アナログ時代のチャンネル番号。デジタルのリモコン番号とは違います。',type:'analogMap',key:'tokyo',topic:'analog',phase:2,popularity:1.05,firstYear:1959,lastYear:2011},
+ {id:'v3_analog_kansai',text:'昔のアナログテレビで、4番が毎日放送・6番が朝日放送・8番が関西テレビだった？',desc:'近畿のアナログ放送の例。中継局や越境受信では違いがあります。',type:'analogMap',key:'kansai',topic:'analog',phase:2,popularity:1.1,firstYear:1959,lastYear:2011},
+ {id:'v3_analog_tokai',text:'昔のアナログテレビで、1番が東海テレビ、5番がCBCテレビだった？',desc:'名古屋周辺の親局の例。UHF中継局では違う番号になります。',type:'analogMap',key:'tokai',topic:'analog',phase:2,popularity:1.08,firstYear:1959,lastYear:2011},
+ {id:'v3_two_nhk',text:'地上波の番組表に、ニュースの内容が違うNHK総合が2つ以上ある？',desc:'アンテナ・CATV・中継局の影響が考えられます。',type:'dualNHL',topic:'reception',phase:2,popularity:1.03},
+ {id:'v3_border_weather',text:'地元のテレビ天気予報が、普段から隣の県の市町村まで詳しく扱っている？',desc:'広域放送の地域ではよくあります。これだけでは特定しません。',type:'joint',topic:'reception',phase:0,popularity:1.07},
+ {id:'v3_simulcast',text:'同じ時間帯に、地上波で似たニュース番組を別の局でも見られる？',desc:'越境受信や複数局編成の可能性があります。',type:'regionalMix',topic:'reception',phase:1,popularity:1.07}
+];
+for(const q of V3_PROGRAMS)QUESTIONS.push(q);
+// Unpopular local-news titles and obvious station names are not quiz questions.
+for(const q of QUESTIONS){
+ if(q.type==='brand'||q.type==='nhkProgram')q.excluded=true;
+ if(q.type==='regionalProgram'&&!['ohayouasahi','dodesuka','psgold','catch','dosanko'].includes(q.key))q.excluded=true;
+ if(q.id==='precure615'||q.id==='pg_precure_earlier')q.phase=2;
+ if(q.id==='pg_historic_waratte'){q.firstYear=1982;q.lastYear=2014;q.topic='nostalgia';q.popularity=1.18;}
+ if(q.id==='pg_historic_pokemon'){q.firstYear=1997;q.lastYear=2026;q.popularity=1.14;}
+ if(q.type==='regionalProgram'){q.popularity=['ohayouasahi','dodesuka','psgold','dosanko'].includes(q.key)?1.7:1.15;}
+ if(q.type==='pokemonSlot' || q.type==='networkSlot' || q.type==='precure830')q.popularity=q.popularity||1.18;
+ if(q.type==='remote'||q.type==='indRemote')q.phase=Math.max(q.phase,2);
+ if(q.type==='station'||q.type==='stationPair'||q.type==='cableBrand'||q.type==='catvDualNHK')q.phase=Math.max(q.phase,2);
+ if(q.type==='catvDualNHK'||q.type==='cableBrand')q.cableOnly=true;
+}
+
+const QBYID=Object.fromEntries(QUESTIONS.map(q=>[q.id,q]));
+const NET_ORDER=['NHK','NTV','TBS','EX','CX','TX'];
+const CANDIDATES=PREFS.flatMap(p=>p.areas.map((a,i)=>({pref:p.name,group:p.group,remote:p.remote,own:p.own,area:a.name,reach:a.reach,id:p.name+':'+i,parts:p.areas.length})));
+const STATE={answers:[],cable:null,showRank:false,finished:false,excludePrefs:new Set(),excludeZones:new Set(),lockedPref:null,active:null};
+const $=s=>document.querySelector(s);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const isTxHome=(c,key)=>key==='tvh'?c.pref==='北海道':key==='tva'?c.pref==='愛知県':key==='tvo'?c.pref==='大阪府':key==='tsc'?['岡山県','香川県'].includes(c.pref):key==='tvq'?c.pref==='福岡県':false;
+function stationChance(c,key){
+ let raw;
+ if(key==='tvh')raw=c.pref==='北海道'?.87:.025;
+ else if(Object.hasOwn(INDIES,key))raw=c.own===key?.94:.028;
+ else raw=isTxHome(c,key)?.94:.03;
+ if(Object.hasOwn(c.reach,key))raw=c.reach[key];
+ if(STATE.cable===true&&raw<.88)raw=clamp(raw*.72+.14,.08,.86);
+ if(STATE.cable===false&&raw<.85)raw=clamp(raw*.97,.02,.83);
+ return clamp(raw,.03,.97);
+}
+function hasTX(c){
+ let p=c.remote[5]!=null?.93:.05;
+ for(const k of ['tvh','tva','tvo','tsc','tvq'])p=Math.max(p,stationChance(c,k)*.92);
+ return clamp(p,.05,.95);
+}
+function isIndRemote(c,key){
+ let miss=.045;
+ for(const [k,n] of Object.entries(INDIE_REMOTE))if(n===key)miss=1-(1-miss)*(1-stationChance(c,k));
+ return clamp(miss,.05,.95);
+}
+function broadMix(c){return ['宮崎県','福井県','大分県'].includes(c.pref)?.88: ['佐賀県','徳島県','山梨県','鳥取県','島根県','高知県','青森県','秋田県'].includes(c.pref)?.65:.22;}
+function prefStationCount(c){
+ if(c.pref==='徳島県'||c.pref==='佐賀県')return 1;
+ if(['宮崎県','山梨県','福井県'].includes(c.pref))return 2;
+ if(['大分県','鳥取県','島根県','青森県','秋田県','富山県','山口県','高知県','沖縄県'].includes(c.pref))return 3;
+ return c.remote[5]==null?4:5;
+}
+function cableChance(c,key){
+ const a=c.area,p=c.pref,has=s=>a.includes(s);
+ let val=.027;
+ if(key==='starcat'&&p==='愛知県')val=has('名古屋')?.76:has('尾張北部')?.20:has('尾張西部')?.28:.04;
+ if(key==='medias'&&p==='愛知県')val=has('知多半島')?.76:.04;
+ if(key==='cty'&&p==='三重県')val=has('北勢')?.77:.04;
+ if(key==='ztv'){
+  if(p==='三重県')val=has('中勢')?.74:has('伊勢志摩')?.54:has('東紀州')?.80:.07;
+  if(p==='滋賀県')val=has('大津')?.63:has('湖東')?.70:has('湖北')?.62:has('湖西')?.37:.04;
+  if(p==='和歌山県')val=has('新宮')?.66:has('紀中')?.19:has('紀南')?.24:.04;
+  if(p==='京都府')val=has('丹波')?.13:has('京都市')?.07:.025;
+ }
+ if(key==='banban'&&p==='兵庫県')val=has('播磨')?.67:.025;
+ if(key==='kct'&&p==='岡山県')val=has('県南')?.55:has('備中西部')?.08:.025;
+ if(key==='oni'&&p==='岡山県')val=has('県南')?.57:has('備前')?.09:.025;
+ if(key==='ncn'&&p==='鳥取県')val=has('東部')?.71:.025;
+ return clamp(val,.02,.86);
+}
+function networkSlotChance(c,network){
+ const ix=NET_ORDER.indexOf(network);
+ if(ix<0)return .5;
+ // Simulcasts are more common on affiliates, but off-network broadcasts and spillover exist.
+ let p=c.remote[ix]!==null?.84:.105;
+ if(network==='EX'&&['鳥取県','島根県'].includes(c.pref))p=.07;
+ if(network==='CX'&&['山口県','大分県'].includes(c.pref))p=.24;
+ if(network==='NTV'&&c.pref==='沖縄県')p=.18;
+ return p;
+}
+function pokemonSlotChance(c,key){
+ let p=POKEMON_SLOTS[key]?.includes(c.pref)?.86:.035;
+ if(key==='fri1855'){
+  p=Math.max(p,c.remote[5]!==null?.94:.025);
+  // Key example: both Gifu and Nara broadcast on the same day/time despite not being TX affiliates.
+  p=Math.max(p,c.own==='gb'||c.own==='nr'?.9:0);
+ }
+ // Neighboring reception/CATV may bring a programme from outside its home broadcast area.
+ if(key==='fri1855')for(const k of ['tva','tvo','tsc','tvq','tvh'])p=Math.max(p,stationChance(c,k)*.80);
+ if(STATE.cable===true)p=clamp(p*.90+.045,.035,.96);
+ return clamp(p,.035,.96);
+}
+function localProgramChance(q,c){
+ let p=q.prefs.includes(c.pref)?.86:.035;
+ if(q.key==='dodesuka'||q.key==='catch'||q.key==='psgold'){
+  if(!q.prefs.includes(c.pref)&&['滋賀県','静岡県'].includes(c.pref))p=.08;
+ }
+ if(q.key==='ohayouasahi'&&c.pref==='三重県')p=.11;
+ // Time-lagged childhood memories & area boundary spillovers make false-negatives plausible.
+ if(STATE.cable===true)p=clamp(p*.88+.05,.04,.91);
+ return p;
+}
+function pokemonGroupChance(c,kind){
+ if(kind==='satam')return ['sat0600','sat0630','sat0700','sat0730','sat1015','sat1115'].some(k=>POKEMON_SLOTS[k].includes(c.pref))?.86:.10;
+ if(kind==='sunam')return ['sun0600','sun0615','sun0630','sun0900','sun0930','sun1100'].some(k=>POKEMON_SLOTS[k].includes(c.pref))?.86:.10;
+ if(kind==='weekdaypm')return ['mon1621','wed1700','fri1620'].some(k=>POKEMON_SLOTS[k].includes(c.pref))?.83:.10;
+ return .5;
+}
+function chanceLegacy(q,c){
+ let p=.5;
+ if(q.type==='pokemonSlot')p=pokemonSlotChance(c,q.key);
+ else if(q.type==='pokemonGroup')p=pokemonGroupChance(c,q.key);
+ else if(q.type==='networkSlot')p=networkSlotChance(c,q.key);
+ else if(q.type==='regionalProgram')p=localProgramChance(q,c);
+ else if(q.type==='stationPair'){
+   const p1=stationChance(c,q.pair[0]),p2=stationChance(c,q.pair[1]);
+   p=clamp(.03+Math.sqrt(p1*p2)*Math.min(p1,p2)*.92,.035,.91);
+ }
+ else if(q.type==='historic')p=c.remote[NET_ORDER.indexOf(q.key)]!==null?.70:.41;
+ else if(q.type==='indieFlavor')p=c.own?.66:Object.keys(c.reach).some(k=>Object.hasOwn(INDIES,k))?.49:.23;
+ else if(q.type==='regionalMix')p=['東海','近畿','関東'].includes(c.group)?.72:.38;
+ else if(q.type==='gentle')p=.89;
+ else if(q.type==='catvDualNHK')p=(c.pref==='三重県'&&c.area.includes('北勢'))?.70:.045;
+ else if(q.type==='cableBrand')p=cableChance(c,q.key);
+ else if(q.type==='remote'){
+  const ix=NET_ORDER.indexOf(q.key);
+  p=c.remote[ix]===q.value?.93:.05;
+  if(q.key==='TX'){
+   const id=q.value;
+   for(const k of ['tva','tvo','tsc','tvq','tvh']){
+     const remote=id===10?k==='tva':id===7?k!=='tva':false;
+     if(remote)p=Math.max(p,stationChance(c,k)*.83);
+   }
+  }
+ }else if(q.type==='station')p=stationChance(c,q.key);
+ else if(q.type==='brand'){
+  const b=BRAND_LOOKUP[q.key];
+  p=b.prefs.includes(c.pref)?.88:.035;
+  if(q.key==='kbc'&&c.pref==='佐賀県')p=Math.max(p,stationChance(c,'tvq')*.78);
+  if(q.key==='kbc'&&c.pref==='山口県')p=Math.max(p,stationChance(c,'tvq')*.47);
+  if(STATE.cable===true&&p<.86)p=clamp(p*.77+.12,.045,.88);
+ }
+ else if(q.type==='txDirect')p=hasTX(c);
+ else if(q.type==='indRemote')p=isIndRemote(c,q.value);
+ else if(q.type==='anyPrivate3')p=clamp(Math.max(isIndRemote(c,3),c.remote[1]===3?.85:.04,c.remote[2]===3?.88:.04,c.remote[4]===3?.83:.04),.06,.93);
+ else if(q.type==='few'){
+  const count=prefStationCount(c),diff=Math.abs(q.value-count);
+  p=q.value===2?(count<=2?.82:count===3?.24:.06):(diff===0?.81:diff===1?.34:.07);
+  if(STATE.cable===true)p=p*.7+.16;
+ }else if(q.type==='precure830'){
+  p=c.remote[3]!==null?.89:.12;
+  if(c.pref==='佐賀県')p=Math.max(p,stationChance(c,'tvq')*.72);
+  if(c.pref==='徳島県')p=Math.max(p,stationChance(c,'tvo')*.72);
+ }
+ else if(q.type==='precure615')p=['鳥取県','島根県'].includes(c.pref)?.91:.035;
+ else if(q.type==='nhkProgram')p=c.pref===q.key?.91:.04;
+ else if(q.type==='joint')p=['関東','東海','近畿'].includes(c.group)?.80:['鳥取県','島根県','岡山県','香川県'].includes(c.pref)?.78:.21;
+ else if(q.type==='mix')p=broadMix(c);
+ else if(q.type==='delay')p=c.remote[5]!==null?.25:.65;
+ else if(q.type==='team'){
+  let score=q.key===c.group?.74:.12;
+  if(q.key==='中国'&&['鳥取県','島根県','山口県','岡山県'].includes(c.pref))score=.42;
+  if(q.key==='九州・沖縄'&&c.pref==='沖縄県')score=.34;
+  if(q.key==='東北'&&c.pref==='青森県')score=.37;
+  return clamp(score,.08,.85);
+ }
+ return clamp(p,.035,.965);
+}
+function entries(){
+ const L=CANDIDATES.map(c=>{
+  let log=-Math.log(47*c.parts);
+  if(STATE.excludePrefs.has(c.pref))log-=4.8;
+  if(STATE.excludeZones.has(c.id))log-=4.8;
+  if(STATE.lockedPref&&c.pref!==STATE.lockedPref)log-=6.8;
+  for(const a of STATE.answers){if(a.qid==='cable'||a.val==='unknown')continue;const q=QBYID[a.qid];if(!q)continue;let p=chance(q,c);
+   if(a.val==='yes')log+=Math.log(p);
+   else if(a.val==='no')log+=Math.log(1-p);
+   else if(a.val==='probably_yes')log+=.58*Math.log(p)+.42*Math.log(1-p);
+   else if(a.val==='probably_no')log+=.42*Math.log(p)+.58*Math.log(1-p);
+  }return {c,log};
+ });
+ const m=Math.max(...L.map(x=>x.log));let denom=0;for(const x of L){x.w=Math.exp(x.log-m);denom+=x.w;}for(const x of L)x.w/=denom;
+ return L;
+}
+function totals(E){
+ const byPref=new Map(),byZone=[];
+ for(const e of E){byPref.set(e.c.pref,(byPref.get(e.c.pref)||0)+e.w);byZone.push({...e});}
+ return {prefs:[...byPref].map(([name,p])=>({name,p})).sort((a,b)=>b.p-a.p),zones:byZone.sort((a,b)=>b.w-a.w)};
+}
+function scoreQuestion(q,E){
+ let py=0;for(const e of E)py+=e.w*chance(q,e.c);py=clamp(py,.0001,.9999);
+ // Mutual information of a Bayesian yes/no question, robust to population imbalance.
+ const H=x=>-x*Math.log2(x)-(1-x)*Math.log2(1-x);
+ let expected=0;for(const e of E)expected+=e.w*H(clamp(chance(q,e.c),.0001,.9999));
+ return H(py)-expected;
+}
+function getNext(E){
+ const used=new Set(STATE.answers.map(a=>a.qid));
+ const n=STATE.answers.length;
+ const stage=n<4?0:n<9?1:n<15?2:3;
+ // Cable is reception context, not a geographical fingerprint.
+ if(n===6&&!used.has('cable'))return {id:'cable',text:'地デジを見るとき、ケーブルテレビや光テレビを使っている？',desc:'よく分からない場合は「わからない」でOK。未契約なら「いいえ」。',phase:1,topic:'habit'};
+ let best=null,bestScore=-Infinity;
+ const sums=totals(E),high=sums.prefs[0]?.p||0;
+ const recent=STATE.answers.slice(-5).map(a=>QBYID[a.qid]?.topic).filter(Boolean);
+ const last2=STATE.answers.slice(-2).map(a=>QBYID[a.qid]);
+ const technicalUsed=STATE.answers.slice(9).filter(a=>QBYID[a.qid]?.type==='remote'||QBYID[a.qid]?.type==='indRemote').length;
+ for(const q of QUESTIONS){
+  if(used.has(q.id))continue;
+  // Stage I: nationally recognizable programme habits; Stage II: scheduling & broad broadcast features;
+  // Stage III: region-specific shows/channels; Stage IV: CATV and simultaneous spillover pairs.
+  if(stage===0&&!(q.id.startsWith('pg_')&&q.phase===0))continue;
+  if(stage===1){if(q.phase>1)continue;if(q.type==='regionalProgram'||q.type==='stationPair'||q.type==='remote'||q.type==='indRemote'||q.type==='brand')continue;}
+  if(stage===2&&q.phase>2)continue;
+  if(stage===2&&(q.type==='remote'||q.type==='indRemote')&&technicalUsed>=2)continue;
+  if(last2.length===2&&last2.every(x=>x&&['remote','indRemote'].includes(x.type))&&['remote','indRemote'].includes(q.type))continue;
+  if(q.phase===3&&(stage<3||STATE.cable===false&&q.type==='cableBrand'))continue;
+  if(q.type==='cableBrand'&&STATE.cable!==true)continue;
+  let score=scoreQuestion(q,E);
+  // Prefer accessible questions unless they lose significant information.
+  if(q.type==='remote'||q.type==='indRemote')score-=(stage===1?.16:stage===2?.14:.02);
+  if(q.type==='brand')score-=stage===2?.04:0;
+  if(q.type==='station')score-=stage===1?.08:stage===2?.015:0;
+  if(q.type==='regionalProgram'&&high<.19)score-=.05;
+  if(q.phase===2&&high<.16)score-=.02;
+  if(q.topic){
+    const repeats=recent.filter(t=>t===q.topic).length;
+    score-=repeats*(q.topic==='pokemon'?.24:.14);
+  }
+  // Limit consecutive programme-time trivia while preserving later targeted questioning.
+  if(stage===0&&q.type==='historic')score-=.13;
+  if(stage===0&&q.type==='gentle')score-=.10;
+  if(stage===0&&q.type==='networkSlot')score+=.008;
+  // Random tie-breaks only (deterministic otherwise), no location geolocation or personal data.
+  if(score>bestScore){best=q;bestScore=score;}
+ }
+ // Fallback if remaining question pool exhausted.
+ if(!best)best=QUESTIONS.find(q=>!used.has(q.id))||null;
+ return best;
+}
+function answer(qid,val){
+ if(qid==='cable')STATE.cable=val==='yes'?true:val==='no'?false:null;
+ STATE.answers.push({qid,val});STATE.finished=false;
+ const E=entries(),T=totals(E),k=STATE.answers.length;
+ const top=T.prefs[0]?.p||0;
+ if(k>=29||(k>=15&&top>.87)||(k>=21&&top>.69)){STATE.finished=true;STATE.active=null;}
+ else STATE.active=getNext(E);
+ render();
+}
+function rewind(){
+ if(!STATE.answers.length)return;
+ STATE.answers.pop();
+ STATE.cable=STATE.answers.some(x=>x.qid==='cable')?STATE.answers.find(x=>x.qid==='cable').val==='yes'?true:STATE.answers.find(x=>x.qid==='cable').val==='no'?false:null:null;
+ STATE.finished=false;STATE.excludePrefs.clear();STATE.excludeZones.clear();STATE.lockedPref=null;STATE.active=getNext(entries());render();
+}
+function fresh(){STATE.answers=[];STATE.cable=null;STATE.showRank=false;STATE.finished=false;STATE.excludePrefs.clear();STATE.excludeZones.clear();STATE.lockedPref=null;STATE.active=getNext(entries());render();}
+function result(){STATE.finished=true;STATE.active=null;render();}
+function rejectPref(){let T=totals(entries());if(T.prefs[0])STATE.excludePrefs.add(T.prefs[0].name);continueGame();}
+function rejectZone(){let T=totals(entries());if(T.prefs[0]){STATE.lockedPref=T.prefs[0].name;const topZone=T.zones.find(z=>z.c.pref===STATE.lockedPref);if(topZone)STATE.excludeZones.add(topZone.c.id);}continueGame();}
+function continueGame(){STATE.finished=false;STATE.active=getNext(entries());if(!STATE.active)STATE.finished=true;render();}
+function percent(p){return (p*100).toFixed(p<.1?1:0)+'%';}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+const ANS=[['yes','はい'],['probably_yes','たぶんそう'],['unknown','わからない'],['probably_no','たぶん違う'],['no','いいえ']];
+function renderQuestion(){
+ const q=STATE.active||getNext(entries());STATE.active=q;
+ if(!q){STATE.finished=true;renderResult();return;}
+ $('#stepLabel').textContent='QUESTION '+String(STATE.answers.length+1).padStart(2,'0');
+ $('#stageTag').textContent=STATE.answers.length<4?'第1幕・番組の記憶':STATE.answers.length<9?'第2幕・放送時間の癖':STATE.answers.length<15?'第3幕・地域番組':'第4幕・受信範囲の追跡';
+ $('#progress').style.width=clamp(STATE.answers.length/29*100,0,100)+'%';
+ $('#gameContent').innerHTML=`<h2 class="question">${esc(q.text)}</h2><p class="hint">${esc(q.desc)}</p><div class="answers" role="group" aria-label="回答を選択">${ANS.map(([key,label],i)=>`<button class="answer" type="button" data-answer="${key}"><span class="ansNo">${i+1}</span><span>${label}</span></button>`).join('')}</div><div class="subControls"><div><button class="ghost" id="undoBtn" ${STATE.answers.length?'':'disabled'}>1つ戻る</button><button class="ghost" id="resetBtn">最初から</button></div><div>${STATE.answers.length>=6?'<button class="ghost" id="judgeBtn">いま判定する</button>':'<span class="smallNote">数字キー 1〜5 で回答できます</span>'}</div></div>${renderHistory()}`;
+ document.querySelectorAll('[data-answer]').forEach(el=>el.addEventListener('click',()=>answer(q.id,el.dataset.answer)));
+ $('#undoBtn').addEventListener('click',rewind);$('#resetBtn').addEventListener('click',fresh);
+ $('#judgeBtn')?.addEventListener('click',result);
+}
+function renderHistory(){
+ if(!STATE.answers.length)return '';
+ return `<div class="history"><details><summary>回答履歴を見る（${STATE.answers.length}問）</summary><ol>${STATE.answers.map(a=>`<li>${esc(a.qid==='cable'?'ケーブル・光テレビ':QBYID[a.qid]?.text||a.qid)} — <b>${esc(ANS.find(x=>x[0]===a.val)?.[1]||a.val)}</b></li>`).join('')}</ol></details></div>`;
+}
+function renderResult(){
+ const E=entries(),T=totals(E),top=T.prefs[0],zones=T.zones.filter(x=>x.c.pref===top.name),best=zones[0];
+ const localP=best.w/Math.max(top.p,.0001);
+ const underdetermined=top.p<.12;
+ const alternatives=zones.slice(1,4);
+ $('#stepLabel').textContent='DECODE COMPLETE';$('#stageTag').textContent='推理結果';$('#progress').style.width='100%';
+ const reason=underdetermined?'回答だけでは都道府県さえ十分に絞り込めていません。追加の質問に進むことをおすすめします。':STATE.lockedPref?'県内での受信差から再判定しました。':localP<.38?'県内の地区はテレビの情報だけでは十分区別できていません。':'局配置や放送内容を照合して絞り込みました。';
+ $('#gameContent').innerHTML=`<div class="resultTitle">推理したテレビ視聴地域</div><div class="resultPref">${underdetermined?'判定保留':esc(top.name)}</div><div class="resultZone">${underdetermined?'暫定首位：'+esc(top.name)+' ／ ':''}${esc(best.c.area)} <span style="font-size:12px;color:#aebcc8;font-weight:400">周辺</span></div><p class="resultDesc">${esc(reason)} あくまでテレビ環境からの仮説で、出生地や現在の居住地を保証するものではありません。</p><div class="scoreSection"><div class="scoreLine"><span>都道府県の推定比率</span><span class="bar"><i style="width:${top.p*100}%"></i></span><b>${percent(top.p)}</b></div><div class="scoreLine"><span>県内地域の推定比率</span><span class="bar"><i style="width:${localP*100}%"></i></span><b>${percent(localP)}</b></div></div><p class="finePrint">※ 数値は候補モデル内の相対的な推定比率であり、検証済み正答率ではありません。</p><div class="alternatives"><strong>近い候補・まだ残っている可能性</strong>${alternatives.map(z=>`<div>${esc(z.c.area)} (${percent(z.w/Math.max(top.p,.0001))})</div>`).join('')}${T.prefs.slice(1,3).map(x=>`<div>${esc(x.name)} (${percent(x.p)})</div>`).join('')}</div><div class="resultActions"><button class="primary" id="correctBtn">当たった！</button><button class="ghost" id="noPrefBtn">都道府県が違う</button><button class="ghost" id="noZoneBtn">県は合ってるが地区が違う</button><button class="ghost" id="moreBtn">追加の質問</button><button class="ghost" id="restartBtn">再挑戦</button></div>${renderHistory()}`;
+ $('#correctBtn').addEventListener('click',()=>{$('#gameContent').insertAdjacentHTML('beforeend','<p class="resultDesc" style="color:var(--mint)">判定のご協力ありがとう！ また別の地域で遊んでね。</p>');$('#correctBtn').disabled=true;});
+ $('#noPrefBtn').addEventListener('click',rejectPref);$('#noZoneBtn').addEventListener('click',rejectZone);$('#moreBtn').addEventListener('click',continueGame);$('#restartBtn').addEventListener('click',fresh);
+}
+function renderRank(E){
+ const T=totals(E),open=STATE.showRank;
+ $('#peekBtn').textContent=open?'閉じる':'表示する';$('#candidateList').hidden=!open;
+ if(open){const p=T.prefs.slice(0,5);$('#candidateList').innerHTML=p.map((x,i)=>`<div class="candidateRow"><span>${i+1}. ${esc(x.name)}</span><span>${percent(x.p)}</span><div class="bar"><i style="width:${x.p*100}%"></i></div></div>`).join('')||'<span>候補なし</span>';}
+ const n=STATE.answers.length,t=T.prefs[0];
+ $('#analysisTip').textContent=n===0?'まだ何も答えていません。最初の質問から、電波の特徴を調べましょう。':STATE.finished?`解析終了。${n}問の回答から候補を比較しました。`:n<5?`${n}問の回答を照合中。まず身近な番組の放送時間から大まかに探っています。`:t.p<.32?`${n}問を照合。候補がまだ分散しているため、質問を続けます。`:`${n}問を照合。地域ごとの受信状況を比較中です。`;
+}
+function render(){const E=entries();if(STATE.finished)renderResult();else renderQuestion();renderRank(E);}
+// V3 game policy, target-dependent certainty and private, ephemeral preference controls.
+const SETTINGS={granularity:'pref',threshold:.80,maxQuestions:55,minQuestions:{pref:7,region:13,county:20,municipality:24}};
+STATE.started=false;
+STATE.profile=null; // Only in memory until the game is ended; never persisted or transmitted.
+STATE.lastResultReason='';
+const TARGET_LABELS={pref:'都道府県',region:'大まかな地区',county:'市・郡周辺',municipality:'市区町村'};
+const PREF_NAMES=Object.fromEntries(PREFS.map(p=>[p.name,p]));
+function eraseSession(){
+ STATE.profile=null; STATE.answers.length=0; STATE.cable=null; STATE.active=null;
+ STATE.excludePrefs.clear();STATE.excludeZones.clear();STATE.lockedPref=null;
+ STATE.finished=false;STATE.started=false;STATE.showRank=false;
+}
+window.addEventListener('pagehide',eraseSession);
+function municipalityExamples(name){
+ const match=name.match(/（([^）]+)）/);
+ if(!match)return [];
+ return match[1].split(/[・、／]/).map(s=>s.trim()).filter(Boolean).filter(s=>!['周辺','その他','全域','東部','西部','南部','北部'].includes(s)).slice(0,4);
+}
+function broadZoneName(c){
+ if(c.pref==='長野県'&&(c.area.startsWith('南信')||c.area.startsWith('飯田・下伊那')))return '南信';
+ const left=c.area.split('（')[0];
+ return left;
+}
+function targetTotals(E){
+ const maps=new Map(),T=totals(E);
+ for(const e of E){
+  const key=SETTINGS.granularity==='pref'?e.c.pref:
+    SETTINGS.granularity==='region'?e.c.pref+'|'+broadZoneName(e.c):e.c.id;
+  const old=maps.get(key);
+  if(old)old.p+=e.w;
+  else maps.set(key,{key,p:e.w,pref:e.c.pref,area:SETTINGS.granularity==='region'?broadZoneName(e.c):e.c.area,c:e.c});
+ }
+ const targets=[...maps.values()].sort((a,b)=>b.p-a.p);
+ const top=targets[0];
+ // City/county names from broad-zone examples are NOT statistically distinguishable;
+ // always mark these target modes as unresolved pending verified municipal-level reception data.
+ const supported=SETTINGS.granularity==='pref'||SETTINGS.granularity==='region';
+ return {targets,top,prefs:T.prefs,supported,ready:supported&&top&&top.p>=SETTINGS.threshold};
+}
+function eraWeight(q){
+ const age=STATE.profile?.age;
+ if(q.firstYear && q.lastYear && age!==null && Number.isFinite(age)){
+  // A respondent must have been old enough to watch during original broadcast.
+  const earliestBorn=2026-age;
+  if(earliestBorn>q.lastYear-4)return 0;
+ }
+ if(q.lastYear&&q.lastYear<2020&&age===null)return .54;
+ return 1;
+}
+function chance(q,c){
+ if(q.type==='eraFrame'){
+  const p=networkSlotChance(c,q.key);
+  // Broadcast affiliate opening dates, where independently verified.
+  const start=q.key==='CX'&&c.pref==='岩手県'?1991:1970;
+  const years=q.lastYear-q.firstYear+1;
+  const active=Math.max(0,q.lastYear-Math.max(start,q.firstYear)+1)/Math.max(1,years);
+  return clamp(.43+(p-.43)*.48*(.45+.55*active),.16,.76); // network/out-of-network time lags
+ }
+ if(q.type==='eraRegional'){
+  const own=q.prefs.includes(c.pref),p=own?.76:.25;
+  return q.syndicated?clamp(.43+(p-.43)*.38,.30,.56):clamp(p,.15,.79);
+ }
+ if(q.type==='localTrivia'){
+  // Akita and Yamanashi have examples; some historical parallels elsewhere.
+  return q.prefs.includes(c.pref)? .73:.12;
+ }
+ if(q.type==='analogMap'){
+  const g=q.key;
+  const yes=g==='tokyo'?['東京都','神奈川県','埼玉県','千葉県']:g==='kansai'?['大阪府','兵庫県','京都府','奈良県','和歌山県','滋賀県']:['愛知県','岐阜県','三重県'];
+  const local=yes.includes(c.pref);
+  return local?(q.key==='tokyo'?.67:.72):.085;
+ }
+ if(q.type==='dualNHL'){
+  const borderCount=Object.values(c.reach||{}).filter(x=>x>.23).length;
+  const p=.09+Math.min(.43,borderCount*.11)+(STATE.cable===true?.12:0);
+  return clamp(p,.055,.74);
+ }
+ return chanceLegacy(q,c);
+}
+function sourceCategory(q){
+ return q.topic||({pokemonSlot:'pokemon',pokemonGroup:'pokemon',networkSlot:'anime',remote:'remote',brand:'station',regionalProgram:'local',catvDualNHK:'cable',cableBrand:'cable',station:'station',stationPair:'station',precure830:'anime'}[q.type]||q.type);
+}
+function scoreQuestionTarget(q,E){
+ // Bayesian information gain, with geographic target rather than all 217 subregions.
+ const groups=new Map();let py=0,hy=0;
+ const H=x=>{x=clamp(x,.00001,.99999);return -x*Math.log2(x)-(1-x)*Math.log2(1-x);};
+ for(const e of E){
+  const p=chance(q,e.c),w=e.w;
+  py+=w*p;hy+=w*H(p);
+  const k=SETTINGS.granularity==='pref'?e.c.pref:SETTINGS.granularity==='region'?e.c.pref+'|'+broadZoneName(e.c):e.c.id;
+  const t=groups.get(k)||{w:0,yes:0};t.w+=w;t.yes+=w*p;groups.set(k,t);
+ }
+ let cond=0;for(const g of groups.values())cond+=g.w*H(g.yes/g.w);
+ return {mi:Math.max(0,H(py)-cond),split:H(py),pred:py};
+}
+function getNext(E){
+ const used=new Set(STATE.answers.map(x=>x.qid)),n=STATE.answers.length;
+ if(SETTINGS.granularity!=='pref' && n>=20 && !used.has('cable'))return {id:'cable',text:'普段の地上波テレビは、ケーブルテレビや光テレビ経由で見ていた？',desc:'契約が分からない場合は「わからない」でOK。CATV局名の質問は地域の細分化モードでのみ使うよ。',phase:3,topic:'reception'};
+ const stage=n<5?0:n<12?1:n<22?2:3;
+ const recent=STATE.answers.slice(-6).map(a=>sourceCategory(QBYID[a.qid]||{type:'misc'}));
+ const T=targetTotals(E);
+ const candidates=[];
+ for(const q of QUESTIONS){
+  if(used.has(q.id)||q.excluded)continue;
+  if(q.cableOnly&&SETTINGS.granularity==='pref')continue;
+  if(q.type==='cableBrand'&&STATE.cable!==true)continue;
+  if(q.cableOnly&&n<19)continue;
+  if(stage===0&&q.phase>0)continue;
+  if(stage===1&&q.phase>1)continue;
+  if(stage===2&&q.phase>2)continue;
+  if(stage===0 && !['networkSlot','pokemonSlot','pokemonGroup','historic','eraFrame','gentle','indieFlavor','joint','regionalMix','delay'].includes(q.type))continue;
+  if(stage===1&&['brand','station','stationPair','regionalProgram','analogMap','nhkProgram'].includes(q.type))continue;
+  if(stage<2&&q.type==='localTrivia'&&q.id==='v3_akita_travel')continue;
+  if(q.type==='analogMap'&&STATE.profile?.age!==null && STATE.profile?.age<20)continue;
+  const era=eraWeight(q);if(era===0)continue;
+  const {mi,split,pred}=scoreQuestionTarget(q,E);
+  // Very narrow or almost deterministic questions are poor opening questions.
+  if(stage===0&&(mi>.17||pred<.17||pred>.88))continue;
+  if(stage===1&&(mi>.32||pred<.10||pred>.91))continue;
+  if(stage===2&&mi>.62)continue;
+  let score=mi*(.60+.4*era)*(q.popularity||1);
+  if(q.type==='remote'||q.type==='indRemote')score-=(stage===2?.11:.045);
+  if(q.type==='station')score-=stage===2?.07:.012;
+  if(q.type==='regionalProgram')score+=stage>=2?.03:0;
+  if(q.type==='historic'||q.type==='eraFrame')score+=stage<=1?.012:0;
+  const category=sourceCategory(q),rep=recent.filter(t=>t===category).length;
+  score-=rep*.087;
+  // Neutral variation for optional gender: ordering of similarly scored questions only,
+  // never geography, demographics stereotype, or evidence likelihood.
+  const g=STATE.profile?.gender||'skip';
+  const tie=(g==='female'?7:g==='male'?11:g==='other'?13:17);
+  score+=(((q.id.length*31+tie)%13)/13)*.0008;
+  if(stage===0&&q.type==='gentle')score-=.09;
+  if(score>-.05)candidates.push({q,score,mi});
+ }
+ candidates.sort((a,b)=>b.score-a.score);
+ if(!candidates.length){
+  // Fallback still enforces CATV and historically implausible questions.
+  return QUESTIONS.find(q=>!q.excluded&&!used.has(q.id)&&!(SETTINGS.granularity==='pref'&&(q.type.startsWith('catv')||q.cableOnly))&&eraWeight(q)>0)||null;
+ }
+ return candidates[0].q;
+}
+function answer(qid,val){
+ if(qid==='cable')STATE.cable=val==='yes'?true:val==='no'?false:null;
+ STATE.answers.push({qid,val});
+ const T=targetTotals(entries()),n=STATE.answers.length;
+ if(n>=SETTINGS.minQuestions[SETTINGS.granularity]&&T.ready){STATE.finished=true;STATE.active=null;STATE.lastResultReason='threshold';}
+ else if(n>=SETTINGS.maxQuestions){STATE.finished=true;STATE.active=null;STATE.lastResultReason='limit';}
+ else{STATE.finished=false;STATE.active=getNext(entries());if(!STATE.active){STATE.finished=true;STATE.lastResultReason='exhausted';}}
+ render();
+}
+function rewind(){if(!STATE.answers.length)return;STATE.answers.pop();const c=STATE.answers.find(x=>x.qid==='cable');STATE.cable=c?c.val==='yes'?true:c.val==='no'?false:null:null;STATE.finished=false;STATE.lastResultReason='';STATE.excludePrefs.clear();STATE.excludeZones.clear();STATE.lockedPref=null;STATE.active=getNext(entries());render();}
+function fresh(){eraseSession();renderWelcome();renderRank(entries());}
+function result(){STATE.finished=true;STATE.active=null;STATE.lastResultReason='manual';render();}
+function continueGame(){STATE.finished=false;STATE.active=getNext(entries());if(!STATE.active){STATE.finished=true;STATE.lastResultReason='exhausted';}render();}
+function renderWelcome(){
+ $('#stepLabel').textContent='SYSTEM READY';$('#stageTag').textContent='プレイ設定';$('#progress').style.width='0%';
+ $('#gameContent').innerHTML=`<h2 class="question" style="min-height:0">どこまで当ててほしい？</h2><p class="hint">まず推定レベルと回答タイミングを設定してね。年齢・性別は任意。ゲーム内だけで使用し、終了時に破棄するよ。</p>
+ <div class="setupGrid"><label>推定する細かさ<select id="detailSel">
+ <option value="pref">都道府県だけ</option><option value="region">地域（北信・南信など）</option><option value="county">市・郡の周辺まで〈試験版〉</option><option value="municipality">市区町村まで〈試験版〉</option></select></label>
+ <label>答える確信度<select id="certaintySel"><option value="0.50">早め・50%以上</option><option value="0.70">標準・70%以上</option><option value="0.80" selected>慎重・80%以上</option><option value="0.90">高精度志向・90%以上</option><option value="0.95">極めて慎重・95%以上</option></select></label>
+ <label>年齢（任意）<div class="ageRow"><select id="ageBand"><option value="">回答しない</option><option value="teens">10代</option><option value="20s">20代</option><option value="30s">30代</option><option value="40s">40代</option><option value="50s">50代</option><option value="60s">60代以上</option><option value="exact">数字で入力</option></select><input id="exactAge" type="number" min="0" max="110" inputmode="numeric" placeholder="歳" hidden></div></label>
+ <label>性別（任意）<select id="genderSel"><option value="skip">回答しない</option><option value="male">男性</option><option value="female">女性</option><option value="other">どちらでもない・その他</option></select></label></div>
+ <p class="setupNote">※「確信度」は未校正のモデル内相対値。市区町村レベルでは地域別の受信実測が未整備のため、判定保留になる場合があります。年齢・性別・回答履歴はページ内の一時メモリのみで処理し、外部送信も保存もしません。</p>
+ <button id="beginBtn" class="primary" style="width:100%;margin-top:16px">ゲームを始める</button>`;
+ $('#ageBand').addEventListener('change',e=>{$('#exactAge').hidden=e.target.value!=='exact';});
+ $('#beginBtn').addEventListener('click',()=>{
+  SETTINGS.granularity=$('#detailSel').value;SETTINGS.threshold=Number($('#certaintySel').value);
+  const b=$('#ageBand').value;
+  const ages={teens:15,'20s':25,'30s':35,'40s':45,'50s':55,'60s':68};
+  let age=b==='exact'?Number($('#exactAge').value):ages[b]??null;
+  if(b==='exact'&&($('#exactAge').value===''||!Number.isInteger(age)||age<0||age>110))age=null;
+  STATE.profile={age,gender:$('#genderSel').value};
+  STATE.started=true;STATE.active=getNext(entries());render();
+ });
+}
+function renderQuestion(){
+ const q=STATE.active||getNext(entries());STATE.active=q;
+ if(!q){STATE.finished=true;STATE.lastResultReason='exhausted';renderResult();return;}
+ const n=STATE.answers.length;
+ $('#stepLabel').textContent='QUESTION '+String(n+1).padStart(2,'0');
+ $('#stageTag').textContent=n<5?'第1幕・おなじみの番組':n<12?'第2幕・番組枠と放送の癖':n<22?'第3幕・人気ローカル番組':'第4幕・受信状況';
+ $('#progress').style.width=clamp(n/SETTINGS.maxQuestions*100,0,100)+'%';
+ $('#gameContent').innerHTML=`<h2 class="question">${esc(q.text)}</h2><p class="hint">${esc(q.desc||'受信した地域や時代による例外があります。')}</p><div class="answers" role="group" aria-label="回答を選択">${ANS.map(([key,label],i)=>`<button class="answer" type="button" data-answer="${key}"><span class="ansNo">${i+1}</span><span>${label}</span></button>`).join('')}</div><div class="subControls"><div><button class="ghost" id="undoBtn" ${n?'':'disabled'}>1つ戻る</button><button class="ghost" id="resetBtn">終了・データ破棄</button></div><div>${n>=6?'<button class="ghost" id="judgeBtn">途中判定</button>':'<span class="smallNote">数字キー 1〜5 で回答できます</span>'}</div></div>${renderHistory()}`;
+ document.querySelectorAll('[data-answer]').forEach(el=>el.addEventListener('click',()=>answer(q.id,el.dataset.answer)));
+ $('#undoBtn').addEventListener('click',rewind);$('#resetBtn').addEventListener('click',fresh);$('#judgeBtn')?.addEventListener('click',result);
+}
+function renderResult(){
+ // End of inference: discard demographic preferences immediately, before displaying the result.
+ STATE.profile=null;
+ const E=entries(),T=targetTotals(E),p=T.prefs[0],t=T.top,z=totals(E).zones.filter(x=>x.c.pref===p.name);
+ const confidence=t?.p||0,threshold=SETTINGS.threshold,exactSupported=T.supported;
+ const match=confidence>=threshold&&exactSupported;
+ const detail=SETTINGS.granularity;
+ const areaText=detail==='pref'?'':detail==='region'?t?.area||'':z[0]?.c.area||'';
+ const examples=municipalityExamples(z[0]?.c.area||'');
+ $('#stepLabel').textContent=match?'SIGNAL FOUND':'SIGNAL INCOMPLETE';$('#stageTag').textContent='推理結果';$('#progress').style.width='100%';
+ const title=match?(detail==='pref'?p.name:`${t.pref}・${t.area}`):'判定保留';
+ const note=!exactSupported?'全国の市郡・市区町村別の放送実測モデルがまだ不足しています。都道府県・地域の暫定候補は提示できますが、町名を断定しません。':!match?'設定した確信度にまだ達していません。候補を表示しています。':'受信局と番組の一致度から推理しました。';
+ $('#gameContent').innerHTML=`<div class="resultTitle">推定対象：${esc(TARGET_LABELS[detail])} ／ 設定しきい値：${Math.round(threshold*100)}%</div><div class="resultPref">${esc(title)}</div>
+ <div class="resultZone">${match?'':`暫定候補：${esc(p.name)}${areaText?' ／ '+esc(areaText):''}`}</div>
+ <p class="resultDesc">${esc(note)} ${examples.length&&detail!=='pref'?'この地域の代表的な地名：'+esc(examples.join('・'))+'。':''}</p>
+ <div class="scoreSection"><div class="scoreLine"><span>都道府県候補</span><span class="bar"><i style="width:${p.p*100}%"></i></span><b>${percent(p.p)}</b></div><div class="scoreLine"><span>目標レベル候補</span><span class="bar"><i style="width:${confidence*100}%"></i></span><b>${percent(confidence)}</b></div></div>
+ <p class="finePrint">※ 計算値は未校正のモデル内の相対比率で、実際の正答確率・個人の居住情報ではありません。市郡・市区町村の例示地名は判定結果ではありません。</p>
+ <div class="alternatives"><strong>ほかに残る候補</strong>${T.targets.slice(1,5).map(x=>`<div>${esc(x.pref)}${detail==='pref'?'':'・'+esc(x.area)} (${percent(x.p)})</div>`).join('')}</div>
+ <div class="resultActions"><button class="primary" id="correctBtn">終了・データ破棄</button><button class="ghost" id="noPrefBtn">違う・再推理</button><button class="ghost" id="moreBtn">質問を続ける</button>${detail==='county'||detail==='municipality'?'<button class="ghost" id="regionFallback">大まかな地域で再判定</button>':''}</div>${renderHistory()}`;
+ $('#correctBtn').addEventListener('click',fresh);
+ $('#noPrefBtn').addEventListener('click',()=>{if(T.prefs[0])STATE.excludePrefs.add(T.prefs[0].name);continueGame();});
+ $('#moreBtn').addEventListener('click',continueGame);
+ $('#regionFallback')?.addEventListener('click',()=>{SETTINGS.granularity='region';STATE.lastResultReason='manual';render();});
+}
+function render(){const E=entries();if(!STATE.started)renderWelcome();else if(STATE.finished)renderResult();else renderQuestion();renderRank(E);}
+
+$('#peekBtn').addEventListener('click',()=>{STATE.showRank=!STATE.showRank;renderRank(entries());});
+$('#aboutBtn').addEventListener('click',()=>{
+ const sources=SOURCES.map(s=>`<a class="sourcelink" target="_blank" rel="noopener noreferrer" href="${esc(s.url)}">${esc(s.title)}</a>`).join('');
+ const old=$('#aboutDetails');if(old){old.remove();return;}
+ const block=document.createElement('div');block.id='aboutDetails';block.style='position:relative;z-index:3;max-width:720px;background:#172d3b;border:1px solid #41616d;border-radius:13px;margin:12px auto 22px;padding:22px;font-size:13px;color:#c8d8df';
+ block.innerHTML=`<strong style="font-size:16px;color:#ecf8f7">このゲームのしくみ</strong><p>47都道府県・${CANDIDATES.length}地域候補について、番組の放送曜日・時間、リモコン番号、系列、独立放送局、越境受信の適合度を比較しています。序盤は誰でも答えやすい看板番組から、後半は局名・地域番組・CATVまで段階的に質問します。系列外放送と時差ネットを別データとして考慮します。質問は回答から候補を効率よく区別できるものを自動選択します。</p><p>公式資料から全国の局構成や一部の越境サービスエリアを確認しています。一方、地区ごとの受信見込み数値はゲーム用の暫定仮説であり、実測・免許区域を表すものではありません。CATVや共同アンテナにより受信状況は変わります。同じ放送局を視聴する近接地域は、原理的に区別できない場合があります。</p><p>回答はこのページ内でのみ処理します。サーバーへの投稿や位置情報の取得はしません。</p><strong style="color:var(--mint)">参照した公開情報</strong>${sources}<button class="ghost" style="margin-top:12px" id="closeAbout">閉じる</button>`;
+ $('.grid').before(block);$('#closeAbout').addEventListener('click',()=>block.remove());block.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey||e.repeat||STATE.finished)return;if(document.activeElement&&['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;const ix=Number(e.key)-1;if(ix>=0&&ix<5&&STATE.active){e.preventDefault();answer(STATE.active.id,ANS[ix][0]);}});
+$('#areaCount').textContent=CANDIDATES.length;$('#questionCount').textContent=QUESTIONS.length;
+fresh();
+
+</script></body></html>
